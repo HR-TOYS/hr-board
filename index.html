@@ -604,7 +604,35 @@ function renderCharts() {
     makeChart('growthChart', { color:['#7c3aed','#f59e0b'], tooltip:{trigger:'axis'}, legend:{bottom:0}, grid:{top:20,left:45,right:20,bottom:45}, xAxis:{type:'category',data:monthNames}, yAxis:{type:'value'}, series:[{name:String(y),type:'line',smooth:true,data:mrY.map(x=>num(x.active_headcount_end)),lineStyle:{width:4}},{name:String(c),type:'line',smooth:true,data:mrC.map(x=>num(x.active_headcount_end)),lineStyle:{width:3}}] });
     makeChart('hireExitChart', { color:['#22c55e','#f43f5e','#86efac','#fda4af'], tooltip:{trigger:'axis'}, legend:{bottom:0}, grid:{top:20,left:35,right:20,bottom:50}, xAxis:{type:'category',data:monthNames}, yAxis:{type:'value'}, series:[{name:`Найм ${y}`,type:'bar',data:mrY.map(x=>num(x.hires))},{name:`Увольнения ${y}`,type:'bar',data:mrY.map(x=>num(x.exits))},{name:`Найм ${c}`,type:'line',smooth:true,data:mrC.map(x=>num(x.hires))},{name:`Увольнения ${c}`,type:'line',smooth:true,data:mrC.map(x=>num(x.exits))}] });
     makeChart('turnoverTrendChart', { color:['#7c3aed','#f59e0b'], tooltip:{trigger:'axis'}, legend:{bottom:0}, grid:{top:20,left:45,right:20,bottom:45}, xAxis:{type:'category',data:monthNames}, yAxis:{type:'value',axisLabel:{formatter:'{value}%'}}, series:[{name:String(y),type:'line',smooth:true,data:mrY.map(x=>num(x.turnover_rate_pct).toFixed(1))},{name:String(c),type:'line',smooth:true,data:mrC.map(x=>num(x.turnover_rate_pct).toFixed(1))}] });
-    makeChart('deptTreemap', { tooltip:{}, series:[{type:'treemap', roam:false, nodeClick:false, breadcrumb:{show:false}, data:dep.map(d=>({name:d.name,value:d.value})), label:{color:'#fff',fontWeight:800}, itemStyle:{borderColor:'#fff',borderWidth:2}}] });
+    const depTotal = dep.reduce((sum, d) => sum + num(d.value), 0);
+    makeChart('deptTreemap', {
+      tooltip: {
+        formatter: function(info) {
+          const value = num(info.value);
+          const share = depTotal ? ((value / depTotal) * 100).toFixed(1) : '0.0';
+          return `${info.name}<br/>${value} сотрудников<br/>${share}%`;
+        }
+      },
+      series: [{
+        type: 'treemap',
+        roam: false,
+        nodeClick: false,
+        breadcrumb: { show: false },
+        data: dep.map(d => ({
+          name: d.name,
+          value: d.value,
+          label: {
+            formatter: function() {
+              const share = depTotal ? ((num(d.value) / depTotal) * 100).toFixed(1) : '0.0';
+              return `${d.name}
+${d.value} (${share}%)`;
+            }
+          }
+        })),
+        label: { color: '#fff', fontWeight: 800, fontSize: 12 },
+        itemStyle: { borderColor: '#fff', borderWidth: 2 }
+      }]
+    });
     makeChart('deptTurnoverChart', { color:['#a855f7','#f59e0b'], tooltip:{trigger:'axis'}, legend:{bottom:0}, grid:{left:105,right:15,top:20,bottom:40}, xAxis:{type:'value',axisLabel:{formatter:'{value}%'}}, yAxis:{type:'category',data:turn.map(d=>d.name)}, series:[{name:String(y),type:'bar',data:turn.map(d=>num(d.turnover.toFixed(1)))},{name:String(c),type:'bar',data:turn.map(d=>Math.max(num(d.turnover)-0.7,0).toFixed(1))}] });
     makeChart('ageChart', { color:['#7c3aed','#3b82f6','#22c55e','#f59e0b','#f43f5e','#94a3b8'], tooltip:{trigger:'item'}, legend:{right:0,top:'middle',orient:'vertical'}, series:[{type:'pie',radius:['48%','72%'],center:['38%','48%'],data:activeAgeBands(y)}] });
     makeChart('countryChart', { color:['#7c3aed','#3b82f6','#22c55e','#f59e0b','#f43f5e','#94a3b8'], tooltip:{trigger:'item'}, legend:{right:0,top:'middle',orient:'vertical'}, series:[{type:'pie',radius:['45%','70%'],center:['36%','48%'],data:countryRows(y)}] });
