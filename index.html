@@ -7,13 +7,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <style>
-    body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #f4f7fb; }
+    body { margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f4f7fb; }
     .card { background: white; border-radius: 28px; padding: 24px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06); border: 1px solid rgba(148, 163, 184, 0.16); }
     .tab { border-radius: 18px; padding: 14px 18px; color: #cbd5e1; cursor: pointer; transition: 0.2s; }
     .tab:hover { background: rgba(255,255,255,0.08); color: white; }
-    .tab.active { background: #7c3aed; color: white; font-weight: 700; }
+    .tab.active { background: #7c3aed; color: white; font-weight: 800; }
     .chip { border: 1px solid #e5e7eb; border-radius: 999px; padding: 10px 14px; background: white; font-size: 14px; }
-    select { outline: none; background: transparent; font-weight: 700; color: #0f172a; }
+    select { outline: none; background: transparent; font-weight: 700; color: #0f172a; cursor: pointer; }
+    .kpi-pill { margin-top: 16px; display: inline-block; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 800; }
   </style>
 </head>
 <body>
@@ -46,7 +47,6 @@
     </section>
 
     <section id="kpiGrid" class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4"></section>
-
     <section id="content" class="mt-6"></section>
   </main>
 </div>
@@ -54,6 +54,7 @@
 <script>
 const tabs = ['Обзор', 'Текучесть', 'Оргструктура', 'Workforce', 'География'];
 let activeTab = 'Обзор';
+let charts = [];
 
 const base = {
   2021: { hc: 210, hires: 96, exits: 28, turnover: 1.5, tenure: 1.1, span: 5.2 },
@@ -82,5 +83,233 @@ const departments = [
   { name: 'HR', hc: 84, turnover: 1.9 },
   { name: 'Логистика', hc: 73, turnover: 2.4 }
 ];
-</html>
 
+const managers = [
+  { name: 'Руководитель 001', dept: 'Продажи', reports: 23, turnover: 4.2, risk: 'Высокий' },
+  { name: 'Руководитель 002', dept: 'АТП', reports: 18, turnover: 3.7, risk: 'Высокий' },
+  { name: 'Руководитель 003', dept: 'Разработка', reports: 12, turnover: 1.1, risk: 'Низкий' },
+  { name: 'Руководитель 004', dept: 'HR', reports: 9, turnover: 1.8, risk: 'Средний' },
+  { name: 'Руководитель 005', dept: 'Маркетинг', reports: 16, turnover: 2.8, risk: 'Средний' }
+];
+
+function pct(current, previous) {
+  if (!previous) return '0.0';
+  return (((current - previous) / previous) * 100).toFixed(1);
+}
+
+function selectedYear() { return Number(document.getElementById('yearFilter').value); }
+function compareYear() { return Number(document.getElementById('compareFilter').value); }
+
+function disposeCharts() {
+  charts.forEach(c => { try { c.dispose(); } catch(e) {} });
+  charts = [];
+}
+
+function makeChart(id, option) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const c = echarts.init(el);
+  c.setOption(option);
+  charts.push(c);
+}
+
+function renderTabs() {
+  const el = document.getElementById('tabs');
+  el.innerHTML = tabs.map(t => `<div class="tab ${t === activeTab ? 'active' : ''}" onclick="setTab('${t}')">${t}</div>`).join('');
+}
+
+function setTab(tab) {
+  activeTab = tab;
+  render();
+}
+
+function renderKpis() {
+  const y = selectedYear();
+  const c = compareYear();
+  const a = base[y];
+  const b = base[c];
+
+  const cards = [
+    { title: 'Активный headcount', value: a.hc, delta: `${pct(a.hc, b.hc)}% vs ${c}`, bg: '#ECFDF5', text: '#047857' },
+    { title: 'Найм за год', value: a.hires, delta: `${pct(a.hires, b.hires)}% vs ${c}`, bg: '#F5F3FF', text: '#6D28D9' },
+    { title: 'Текучесть', value: `${a.turnover}%`, delta: `${(a.turnover - b.turnover).toFixed(1)} п.п. vs ${c}`, bg: '#ECFEFF', text: '#0E7490' },
+    { title: 'Средний стаж', value: `${a.tenure}y`, delta: `${(a.tenure - b.tenure).toFixed(1)}y vs ${c}`, bg: '#FFFBEB', text: '#B45309' }
+  ];
+
+  document.getElementById('kpiGrid').innerHTML = cards.map(card => `
+    <div class="card">
+      <div class="text-sm text-gray-500">${card.title}</div>
+      <div class="mt-3 text-5xl font-black text-slate-900">${card.value}</div>
+      <div class="kpi-pill" style="background:${card.bg}; color:${card.text};">${card.delta}</div>
+    </div>
+  `).join('');
+}
+
+function overview() {
+  const y = selectedYear(), c = compareYear();
+  return `
+    <div class="grid gap-6 xl:grid-cols-12">
+      <div class="card xl:col-span-8"><h3 class="text-2xl font-black text-slate-900">Рост компании</h3><p class="text-sm text-gray-500">Сравнение ${c} vs ${y}</p><div id="growthChart" style="height:420px"></div></div>
+      <div class="card xl:col-span-4"><h3 class="text-2xl font-black text-slate-900">Headcount по департаментам</h3><p class="text-sm text-gray-500">Текущий год</p><div id="deptChart" style="height:420px"></div></div>
+      <div class="card xl:col-span-5"><h3 class="text-2xl font-black text-slate-900">Текучесть по департаментам</h3><p class="text-sm text-gray-500">Monthly attrition</p><div id="turnoverChart" style="height:360px"></div></div>
+      <div class="card xl:col-span-7"><h3 class="text-2xl font-black text-slate-900">Executive Insights</h3><p class="text-sm text-gray-500">Ключевые сигналы</p><div class="mt-6 space-y-4">
+        <div class="rounded-3xl bg-violet-50 p-6"><b class="text-violet-900">Рост численности ${pct(base[y].hc, base[c].hc)}%</b><div class="mt-2 text-sm text-violet-700">Основной рост: Продажи, АТП и Разработка.</div></div>
+        <div class="rounded-3xl bg-cyan-50 p-6"><b class="text-cyan-900">Повышенная текучесть в Продажах</b><div class="mt-2 text-sm text-cyan-700">Attrition выше company average.</div></div>
+        <div class="rounded-3xl bg-amber-50 p-6"><b class="text-amber-900">Есть перегруженные руководители</b><div class="mt-2 text-sm text-amber-700">Часть менеджеров имеет span of control &gt; 15.</div></div>
+      </div></div>
+    </div>`;
+}
+
+function attrition() {
+  return `<div class="grid gap-6 xl:grid-cols-12">
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Динамика текучести</h3><p class="text-sm text-gray-500">По месяцам</p><div id="attritionTrend" style="height:420px"></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Причины увольнений</h3><p class="text-sm text-gray-500">Категории</p><div id="reasonsChart" style="height:420px"></div></div>
+  </div>`;
+}
+
+function org() {
+  return `<div class="grid gap-6 xl:grid-cols-12">
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Нагрузка на руководителей</h3><p class="text-sm text-gray-500">Direct reports и риск</p><div class="mt-5 overflow-hidden rounded-2xl border border-slate-100"><table class="w-full text-left text-sm"><thead class="bg-slate-50"><tr><th class="p-4">Руководитель</th><th>Департамент</th><th>Сотрудники</th><th>Текучесть</th><th>Риск</th></tr></thead><tbody>${managers.map(m => `<tr class="border-t"><td class="p-4 font-bold">${m.name}</td><td>${m.dept}</td><td>${m.reports}</td><td>${m.turnover}%</td><td>${m.risk}</td></tr>`).join('')}</tbody></table></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Span of control</h3><p class="text-sm text-gray-500">По руководителям</p><div id="spanChart" style="height:420px"></div></div>
+  </div>`;
+}
+
+function workforce() {
+  return `<div class="grid gap-6 xl:grid-cols-12">
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Гендерное распределение</h3><p class="text-sm text-gray-500">Workforce composition</p><div id="genderChart" style="height:380px"></div></div>
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Стаж</h3><p class="text-sm text-gray-500">Tenure bands</p><div id="tenureChart" style="height:380px"></div></div>
+  </div>`;
+}
+
+function geography() {
+  return `<div class="grid gap-6 xl:grid-cols-12">
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">География</h3><p class="text-sm text-gray-500">Сотрудники по городам</p><div id="cityChart" style="height:420px"></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Фильтры для HRBP</h3><p class="text-sm text-gray-500">Будущий deep-dive</p><div class="mt-6 space-y-4"><div class="rounded-3xl bg-violet-50 p-5">Страна → город → департамент</div><div class="rounded-3xl bg-cyan-50 p-5">Руководитель → команда → текучесть</div><div class="rounded-3xl bg-amber-50 p-5">Порог приватности: не показывать N &lt; 5</div></div></div>
+  </div>`;
+}
+
+function renderCharts() {
+  const y = selectedYear(), c = compareYear();
+  disposeCharts();
+
+  if (activeTab === 'Обзор') {
+    makeChart('growthChart', {
+      color: ['#06b6d4', '#7c3aed'],
+      tooltip: { trigger: 'axis' },
+      legend: { data: [String(c), String(y)], top: 0 },
+      grid: { top: 55, left: 45, right: 25, bottom: 35 },
+      xAxis: { type: 'category', data: monthNames },
+      yAxis: { type: 'value' },
+      series: [
+        { name: String(c), type: 'line', smooth: true, data: monthly[c], lineStyle: { width: 3 } },
+        { name: String(y), type: 'line', smooth: true, areaStyle: { opacity: 0.16 }, data: monthly[y], lineStyle: { width: 4 } }
+      ]
+    });
+
+    makeChart('deptChart', {
+      color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6'],
+      tooltip: { trigger: 'item' },
+      legend: { bottom: 0 },
+      series: [{ type: 'pie', radius: ['45%', '72%'], center: ['50%', '45%'], data: departments.map(d => ({ name: d.name, value: d.hc })) }]
+    });
+
+    makeChart('turnoverChart', {
+      color: ['#f97316'],
+      tooltip: { trigger: 'axis' },
+      grid: { left: 95, right: 25, top: 25, bottom: 35 },
+      xAxis: { type: 'value' },
+      yAxis: { type: 'category', data: departments.map(d => d.name) },
+      series: [{ name: 'Текучесть %', type: 'bar', data: departments.map(d => d.turnover), itemStyle: { borderRadius: [0, 10, 10, 0] } }]
+    });
+  }
+
+  if (activeTab === 'Текучесть') {
+    makeChart('attritionTrend', {
+      color: ['#06b6d4', '#7c3aed'],
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['2025','2026'], top: 0 },
+      grid: { top: 55, left: 45, right: 25, bottom: 35 },
+      xAxis: { type: 'category', data: monthNames },
+      yAxis: { type: 'value' },
+      series: [
+        { name: '2025', type: 'line', smooth: true, data: [1.6,1.8,2.0,1.5,1.9,2.2,2.0,1.7,1.9,2.1,1.8,1.7] },
+        { name: '2026', type: 'line', smooth: true, areaStyle: { opacity: 0.15 }, data: [1.4,1.5,1.8,1.7,1.9,1.8,1.6,1.5,1.7,1.8,1.6,1.5] }
+      ]
+    });
+
+    makeChart('reasonsChart', {
+      color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444'],
+      tooltip: { trigger: 'item' },
+      legend: { bottom: 0 },
+      series: [{ type: 'pie', radius: '68%', center: ['50%', '43%'], data: [
+        { name: 'Личные обстоятельства', value: 31 },
+        { name: 'Не прошёл адаптацию', value: 22 },
+        { name: 'Доход', value: 18 },
+        { name: 'Формат работы', value: 14 },
+        { name: 'Другое', value: 15 }
+      ] }]
+    });
+  }
+
+  if (activeTab === 'Оргструктура') {
+    makeChart('spanChart', {
+      color: ['#7c3aed'],
+      tooltip: { trigger: 'axis' },
+      grid: { left: 45, right: 20, top: 30, bottom: 90 },
+      xAxis: { type: 'category', data: managers.map(m => m.name), axisLabel: { rotate: 25 } },
+      yAxis: { type: 'value' },
+      series: [{ name: 'Direct reports', type: 'bar', data: managers.map(m => m.reports), itemStyle: { borderRadius: [10,10,0,0] } }]
+    });
+  }
+
+  if (activeTab === 'Workforce') {
+    makeChart('genderChart', {
+      color: ['#06b6d4', '#ec4899'],
+      tooltip: { trigger: 'item' },
+      legend: { bottom: 0 },
+      series: [{ type: 'pie', radius: ['48%','72%'], center: ['50%','43%'], data: [{ name: 'Мужчины', value: 54 }, { name: 'Женщины', value: 46 }] }]
+    });
+
+    makeChart('tenureChart', {
+      color: ['#10b981'],
+      tooltip: { trigger: 'axis' },
+      grid: { left: 45, right: 25, top: 30, bottom: 35 },
+      xAxis: { type: 'category', data: ['<3м','3–6м','6–12м','1–2г','2–5л','5л+'] },
+      yAxis: { type: 'value' },
+      series: [{ name: 'Сотрудники', type: 'bar', data: [38,61,92,141,167,49], itemStyle: { borderRadius: [10,10,0,0] } }]
+    });
+  }
+
+  if (activeTab === 'География') {
+    makeChart('cityChart', {
+      color: ['#06b6d4'],
+      tooltip: { trigger: 'axis' },
+      grid: { left: 105, right: 25, top: 30, bottom: 35 },
+      xAxis: { type: 'value' },
+      yAxis: { type: 'category', data: ['Екатеринбург','Гомель','Минск','Москва','Брест','Витебск'] },
+      series: [{ name: 'Сотрудники', type: 'bar', data: [821,236,98,77,30,22], itemStyle: { borderRadius: [0,10,10,0] } }]
+    });
+  }
+}
+
+function renderContent() {
+  const map = { 'Обзор': overview, 'Текучесть': attrition, 'Оргструктура': org, 'Workforce': workforce, 'География': geography };
+  document.getElementById('content').innerHTML = map[activeTab]();
+}
+
+function render() {
+  renderTabs();
+  renderKpis();
+  renderContent();
+  setTimeout(renderCharts, 0);
+}
+
+document.getElementById('yearFilter').addEventListener('change', render);
+document.getElementById('compareFilter').addEventListener('change', render);
+document.getElementById('departmentFilter').addEventListener('change', render);
+document.getElementById('employmentFilter').addEventListener('change', render);
+window.addEventListener('resize', () => charts.forEach(c => c.resize()));
+render();
+</script>
+</body>
+</html>
