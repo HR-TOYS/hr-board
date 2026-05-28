@@ -1,0 +1,1626 @@
+[
+  {
+    "row": 5,
+    "employee_id": "emp_18adfce21b",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 5,
+    "employee_id": "emp_18adfce21b",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 7,
+    "employee_id": "emp_78c2aa1cec",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 11,
+    "employee_id": "emp_1a89a20d11",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 11,
+    "employee_id": "emp_1a89a20d11",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 12,
+    "employee_id": "emp_ba20278efa",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 13,
+    "employee_id": "emp_a838436001",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 24,
+    "employee_id": "emp_7d7615e645",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 24,
+    "employee_id": "emp_7d7615e645",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 28,
+    "employee_id": "emp_ce3e0663f2",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 29,
+    "employee_id": "emp_ed88b766c8",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 29,
+    "employee_id": "emp_ed88b766c8",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 32,
+    "employee_id": "emp_b9d2376d04",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 32,
+    "employee_id": "emp_b9d2376d04",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 33,
+    "employee_id": "emp_7a8ba5968a",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 35,
+    "employee_id": "emp_350e10b873",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 54,
+    "employee_id": "emp_f71ccd60b7",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 55,
+    "employee_id": "emp_fd4c4121d5",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 65,
+    "employee_id": "emp_8265e4bf7e",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 65,
+    "employee_id": "emp_8265e4bf7e",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 66,
+    "employee_id": "emp_07a779b8ff",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 67,
+    "employee_id": "emp_407f2ce5a0",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 69,
+    "employee_id": "emp_b6339aa322",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 70,
+    "employee_id": "emp_cdb05846b4",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 70,
+    "employee_id": "emp_cdb05846b4",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 71,
+    "employee_id": "emp_3aafcff806",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 72,
+    "employee_id": "emp_cfbaa563fc",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 72,
+    "employee_id": "emp_cfbaa563fc",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 73,
+    "employee_id": "emp_93f545edbf",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 74,
+    "employee_id": "emp_dffe37839b",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 74,
+    "employee_id": "emp_dffe37839b",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 75,
+    "employee_id": "emp_14cd9596a8",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 75,
+    "employee_id": "emp_14cd9596a8",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 76,
+    "employee_id": "emp_c76cb53bcb",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 76,
+    "employee_id": "emp_c76cb53bcb",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 77,
+    "employee_id": "emp_f7ba39198d",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 77,
+    "employee_id": "emp_f7ba39198d",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 78,
+    "employee_id": "emp_51fa8d7df5",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 78,
+    "employee_id": "emp_51fa8d7df5",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 79,
+    "employee_id": "emp_d429b48e93",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 79,
+    "employee_id": "emp_d429b48e93",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 80,
+    "employee_id": "emp_301cbe2b09",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 80,
+    "employee_id": "emp_301cbe2b09",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 92,
+    "employee_id": "emp_9b57ca6af4",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 102,
+    "employee_id": "emp_3029412ff5",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 103,
+    "employee_id": "emp_ac92062614",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 106,
+    "employee_id": "emp_dff6dc69ef",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 106,
+    "employee_id": "emp_dff6dc69ef",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 107,
+    "employee_id": "emp_3504e12f22",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 108,
+    "employee_id": "emp_776a58fdd9",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 108,
+    "employee_id": "emp_776a58fdd9",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 111,
+    "employee_id": "emp_3c97c1ea15",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 111,
+    "employee_id": "emp_3c97c1ea15",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 113,
+    "employee_id": "emp_b006672f01",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 114,
+    "employee_id": "emp_dfb6125516",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 114,
+    "employee_id": "emp_dfb6125516",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 115,
+    "employee_id": "emp_6b7594e852",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 115,
+    "employee_id": "emp_6b7594e852",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 116,
+    "employee_id": "emp_492993a5a1",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 118,
+    "employee_id": "emp_f12ab02f2c",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 118,
+    "employee_id": "emp_f12ab02f2c",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 119,
+    "employee_id": "emp_6d65ae5ee6",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 119,
+    "employee_id": "emp_6d65ae5ee6",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 120,
+    "employee_id": "emp_ef58996595",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 120,
+    "employee_id": "emp_ef58996595",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 122,
+    "employee_id": "emp_ca09e6b6b2",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 122,
+    "employee_id": "emp_ca09e6b6b2",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 123,
+    "employee_id": "emp_ebf6aa3ccc",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 124,
+    "employee_id": "emp_6c77bd9ec7",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 126,
+    "employee_id": "emp_df4e84cf6b",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 130,
+    "employee_id": "emp_aa1179106c",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 131,
+    "employee_id": "emp_bbbb39bdb1",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 132,
+    "employee_id": "emp_fa9414c812",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 133,
+    "employee_id": "emp_01f99930fc",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 136,
+    "employee_id": "emp_3d9f7b2a87",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 137,
+    "employee_id": "emp_28511bdc37",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 138,
+    "employee_id": "emp_603adbb17c",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 140,
+    "employee_id": "emp_aa37dcc032",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 142,
+    "employee_id": "emp_be6a4ee164",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 150,
+    "employee_id": "emp_fc42d5c793",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 153,
+    "employee_id": "emp_d2fd4f1a52",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 168,
+    "employee_id": "emp_8d02cd9947",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 184,
+    "employee_id": "emp_7845abc23c",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 355,
+    "employee_id": "emp_6a6b06cb08",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 356,
+    "employee_id": "emp_f08eee074a",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 356,
+    "employee_id": "emp_f08eee074a",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 357,
+    "employee_id": "emp_5e28730f71",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 359,
+    "employee_id": "emp_872d2eb6ec",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 359,
+    "employee_id": "emp_872d2eb6ec",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 360,
+    "employee_id": "emp_eff0baef3a",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 360,
+    "employee_id": "emp_eff0baef3a",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 361,
+    "employee_id": "emp_6d268f767d",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 361,
+    "employee_id": "emp_6d268f767d",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 362,
+    "employee_id": "emp_f5cfa8e8de",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 363,
+    "employee_id": "emp_478238cdb3",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 363,
+    "employee_id": "emp_478238cdb3",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 365,
+    "employee_id": "emp_cf4b48e992",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 365,
+    "employee_id": "emp_cf4b48e992",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 375,
+    "employee_id": "emp_dea8e63693",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 375,
+    "employee_id": "emp_dea8e63693",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 376,
+    "employee_id": "emp_f2af24981d",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 379,
+    "employee_id": "emp_cd13226dfe",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 381,
+    "employee_id": "emp_bc71f90ac0",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 387,
+    "employee_id": "emp_1224da70de",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 388,
+    "employee_id": "emp_f70bab0ffe",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 392,
+    "employee_id": "emp_6414e387c6",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 461,
+    "employee_id": "emp_6382310517",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 461,
+    "employee_id": "emp_6382310517",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 462,
+    "employee_id": "emp_71b99222f4",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 463,
+    "employee_id": "emp_c3f8829326",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 464,
+    "employee_id": "emp_308c004a8e",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 465,
+    "employee_id": "emp_2e2e74a6d5",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 466,
+    "employee_id": "emp_94a32a7edb",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 467,
+    "employee_id": "emp_e23af644ec",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 468,
+    "employee_id": "emp_73942d3805",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 468,
+    "employee_id": "emp_73942d3805",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 495,
+    "employee_id": "emp_480aafdfba",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 496,
+    "employee_id": "emp_c85776c412",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 496,
+    "employee_id": "emp_c85776c412",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 497,
+    "employee_id": "emp_21597b1795",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 498,
+    "employee_id": "emp_a5ed374eba",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 498,
+    "employee_id": "emp_a5ed374eba",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 499,
+    "employee_id": "emp_b20c215f34",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 500,
+    "employee_id": "emp_4b0e843319",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 501,
+    "employee_id": "emp_a318aea43a",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 503,
+    "employee_id": "emp_6d2c7b1aa9",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 503,
+    "employee_id": "emp_6d2c7b1aa9",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 505,
+    "employee_id": "emp_d0843774df",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 506,
+    "employee_id": "emp_a857c7a8cf",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 507,
+    "employee_id": "emp_4a9e0f8884",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 508,
+    "employee_id": "emp_97ce6b58f8",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 509,
+    "employee_id": "emp_feb61e9a26",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 510,
+    "employee_id": "emp_b130d58ecd",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 511,
+    "employee_id": "emp_fffef9c0a9",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 513,
+    "employee_id": "emp_c8c34dfe5c",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 515,
+    "employee_id": "emp_dcb434477d",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 517,
+    "employee_id": "emp_8091fcddea",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 518,
+    "employee_id": "emp_2857d67ea7",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 520,
+    "employee_id": "emp_c033375cee",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 521,
+    "employee_id": "emp_e7db8c949c",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 528,
+    "employee_id": "emp_47b8490c4e",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 530,
+    "employee_id": "emp_d8f7f677ff",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 531,
+    "employee_id": "emp_4480d878d0",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 532,
+    "employee_id": "emp_88cba9f840",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 533,
+    "employee_id": "emp_6553fca02d",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 534,
+    "employee_id": "emp_e1e371b12a",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 535,
+    "employee_id": "emp_7766389d61",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 536,
+    "employee_id": "emp_a8c3d842f8",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 537,
+    "employee_id": "emp_1eb2a8c558",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 539,
+    "employee_id": "emp_4e95913238",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 540,
+    "employee_id": "emp_191fa124e1",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 541,
+    "employee_id": "emp_39b2c10a82",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 542,
+    "employee_id": "emp_aa24a4b3d3",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 543,
+    "employee_id": "emp_b0f1b0e99a",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 544,
+    "employee_id": "emp_fd841b2d4f",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 545,
+    "employee_id": "emp_0e06735eab",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 546,
+    "employee_id": "emp_a30f03fc3c",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 575,
+    "employee_id": "emp_4de9ba4153",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 594,
+    "employee_id": "emp_a7e290b117",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 595,
+    "employee_id": "emp_7de5591abd",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 615,
+    "employee_id": "emp_04255099a3",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 634,
+    "employee_id": "emp_a593732b8a",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 634,
+    "employee_id": "emp_a593732b8a",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 634,
+    "employee_id": "emp_a593732b8a",
+    "severity": "info",
+    "field": "Тип сотрудника/Причина увольнения",
+    "issue_type": "fake_or_service_record",
+    "message": "Служебная/фейковая запись исключена из core metrics"
+  },
+  {
+    "row": 645,
+    "employee_id": "emp_4a96bd9ab2",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 672,
+    "employee_id": "emp_2c6f30b2f1",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 675,
+    "employee_id": "emp_e7d207d6ce",
+    "severity": "info",
+    "field": "Тип сотрудника/Причина увольнения",
+    "issue_type": "fake_or_service_record",
+    "message": "Служебная/фейковая запись исключена из core metrics"
+  },
+  {
+    "row": 767,
+    "employee_id": "emp_9c7d0cdd3c",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 1271,
+    "employee_id": "emp_6db31a49ee",
+    "severity": "info",
+    "field": "Тип сотрудника/Причина увольнения",
+    "issue_type": "fake_or_service_record",
+    "message": "Служебная/фейковая запись исключена из core metrics"
+  },
+  {
+    "row": 1368,
+    "employee_id": "emp_d32b83fe7a",
+    "severity": "info",
+    "field": "Тип сотрудника/Причина увольнения",
+    "issue_type": "fake_or_service_record",
+    "message": "Служебная/фейковая запись исключена из core metrics"
+  },
+  {
+    "row": 1394,
+    "employee_id": "emp_69a3d5293c",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 1416,
+    "employee_id": "emp_b2cf66c881",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1416,
+    "employee_id": "emp_b2cf66c881",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1418,
+    "employee_id": "emp_a6bc3c4d4b",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1418,
+    "employee_id": "emp_a6bc3c4d4b",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1423,
+    "employee_id": "emp_f46796988d",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1423,
+    "employee_id": "emp_f46796988d",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1462,
+    "employee_id": "emp_ba36795043",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 1476,
+    "employee_id": "emp_8707873941",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 1516,
+    "employee_id": "emp_8ba7532a51",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 1544,
+    "employee_id": "emp_1e87917281",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 1597,
+    "employee_id": "emp_ad75af49d6",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1597,
+    "employee_id": "emp_ad75af49d6",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1598,
+    "employee_id": "emp_85f0ce96b7",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1598,
+    "employee_id": "emp_85f0ce96b7",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1599,
+    "employee_id": "emp_eb08a3ddc9",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1599,
+    "employee_id": "emp_eb08a3ddc9",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1600,
+    "employee_id": "emp_47684963a2",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1600,
+    "employee_id": "emp_47684963a2",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1601,
+    "employee_id": "emp_d6af19b74f",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1601,
+    "employee_id": "emp_d6af19b74f",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1602,
+    "employee_id": "emp_3c44ac3f53",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1602,
+    "employee_id": "emp_3c44ac3f53",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1603,
+    "employee_id": "emp_0544e815f7",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1603,
+    "employee_id": "emp_0544e815f7",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1604,
+    "employee_id": "emp_dd1111d044",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1604,
+    "employee_id": "emp_dd1111d044",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1605,
+    "employee_id": "emp_08303ef1a5",
+    "severity": "critical",
+    "field": "Первый рабочий день",
+    "issue_type": "missing_hire_date",
+    "message": "Нет даты найма, запись не участвует в исторической аналитике"
+  },
+  {
+    "row": 1605,
+    "employee_id": "emp_08303ef1a5",
+    "severity": "critical",
+    "field": "Последний рабочий день",
+    "issue_type": "missing_termination_date",
+    "message": "Статус terminated, но нет даты увольнения"
+  },
+  {
+    "row": 1620,
+    "employee_id": "emp_f92de63fb4",
+    "severity": "warning",
+    "field": "Последний рабочий день",
+    "issue_type": "active_with_termination_date",
+    "message": "Активный статус, но заполнена дата увольнения"
+  },
+  {
+    "row": 1632,
+    "employee_id": "emp_428f0f31ac",
+    "severity": "info",
+    "field": "Тип сотрудника/Причина увольнения",
+    "issue_type": "fake_or_service_record",
+    "message": "Служебная/фейковая запись исключена из core metrics"
+  },
+  {
+    "row": 1633,
+    "employee_id": "emp_142fdea233",
+    "severity": "info",
+    "field": "Тип сотрудника/Причина увольнения",
+    "issue_type": "fake_or_service_record",
+    "message": "Служебная/фейковая запись исключена из core metrics"
+  },
+  {
+    "row": 1637,
+    "employee_id": "emp_9c173b3b32",
+    "severity": "info",
+    "field": "Тип сотрудника/Причина увольнения",
+    "issue_type": "fake_or_service_record",
+    "message": "Служебная/фейковая запись исключена из core metrics"
+  }
+]

@@ -1,0 +1,127 @@
+[
+  {
+    "department_id": "dep_5_1_atp",
+    "department_name": "5-1. АТП",
+    "records_count": 283
+  },
+  {
+    "department_id": "dep_2_1_prodazhi_dostavka",
+    "department_name": "2-1. Продажи. Доставка",
+    "records_count": 203
+  },
+  {
+    "department_id": "dep_1_2_lidgen_telemarketing",
+    "department_name": "1-2. Лидген. Телемаркетинг",
+    "records_count": 197
+  },
+  {
+    "department_id": "dep_4_2_razvitie_prochee",
+    "department_name": "4-2. Развитие. Прочее",
+    "records_count": 122
+  },
+  {
+    "department_id": "dep_4_1_razvitie_razrabotka_po",
+    "department_name": "4-1. Развитие. Разработка ПО",
+    "records_count": 120
+  },
+  {
+    "department_id": "dep_2_2_prodazhi_roznica",
+    "department_name": "2-2. Продажи. Розница",
+    "records_count": 99
+  },
+  {
+    "department_id": "dep_1_1_lidgen_marketing",
+    "department_name": "1-1. Лидген. Маркетинг",
+    "records_count": 86
+  },
+  {
+    "department_id": "dep_2_3_prodazhi_meropriyatiya",
+    "department_name": "2-3. Продажи. Мероприятия",
+    "records_count": 85
+  },
+  {
+    "department_id": "dep_3_1_soprovozhdenie_hr",
+    "department_name": "3-1. Сопровождение. HR",
+    "records_count": 84
+  },
+  {
+    "department_id": "dep_3_2_soprovozhdenie_buh_yur_kadry",
+    "department_name": "3-2. Сопровождение. Бух. юр. кадры",
+    "records_count": 79
+  },
+  {
+    "department_id": "dep_2_4_logistika",
+    "department_name": "2-4. Логистика",
+    "records_count": 73
+  },
+  {
+    "department_id": "dep_3_3_soprovozhdenie_teh_administrirovanie",
+    "department_name": "3-3. Сопровождение. Тех. администрирование",
+    "records_count": 60
+  },
+  {
+    "department_id": "dep_4_3_razvitie_operacionnaya_effektivnost",
+    "department_name": "4-3. Развитие. Операционная эффективность",
+    "records_count": 42
+  },
+  {
+    "department_id": "dep_0_2_obschee_rukovodstvo",
+    "department_name": "0-2. Общее руководство",
+    "records_count": 35
+  },
+  {
+    "department_id": "dep_2_5_akkaunting",
+    "department_name": "2-5. Аккаунтинг",
+    "records_count": 35
+  },
+  {
+    "department_id": "dep_5_3_taksopark",
+    "department_name": "5-3. Таксопарк",
+    "records_count": 34
+  },
+  {
+    "department_id": "dep_2_7_prodazhi_sobstvennyy_transport",
+    "department_name": "2-7. Продажи. Собственный транспорт",
+    "records_count": 24
+  },
+  {
+    "department_id": "dep_2_6_kontrol_poezdok",
+    "department_name": "2-6. Контроль поездок",
+    "records_count": 21
+  },
+  {
+    "department_id": "dep_9_8_infobiz",
+    "department_name": "9-8. Инфобиз",
+    "records_count": 17
+  },
+  {
+    "department_id": "dep_1_3_lidgen_tendery",
+    "department_name": "1-3. Лидген. Тендеры",
+    "records_count": 12
+  },
+  {
+    "department_id": "dep_16_00_neyms",
+    "department_name": "16-00. Неймс",
+    "records_count": 12
+  },
+  {
+    "department_id": "dep_5_2_sto",
+    "department_name": "5-2. СТО",
+    "records_count": 6
+  },
+  {
+    "department_id": "dep_9_9_dlya_sluzhebnyh_celey_ne_pravit",
+    "department_name": "9-9. Для служебных целей. Не править",
+    "records_count": 2
+  },
+  {
+    "department_id": "dep_0_0_uchrediteli",
+    "department_name": "0-0. Учредители",
+    "records_count": 1
+  },
+  {
+    "department_id": "dep_0_1_gen_direktor",
+    "department_name": "0-1. Ген. директор",
+    "records_count": 1
+  }
+]

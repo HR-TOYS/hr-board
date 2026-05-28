@@ -1,0 +1,1427 @@
+[
+  {
+    "position_id": "pos_telemarketolog",
+    "title": "Телемаркетолог",
+    "records_count": 194
+  },
+  {
+    "position_id": "pos_voditel_mikroavtobus_ekaterinburg",
+    "title": "Водитель (Микроавтобус) Екатеринбург",
+    "records_count": 88
+  },
+  {
+    "position_id": "pos_voditel_bolshoy_avtobus_ekaterinburg",
+    "title": "Водитель (Большой автобус) Екатеринбург",
+    "records_count": 86
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_krupnomu_biznesu_ural",
+    "title": "Менеджер по продажам крупному бизнесу. Урал",
+    "records_count": 78
+  },
+  {
+    "position_id": "pos_rekruter_hr",
+    "title": "Рекрутер (HR)",
+    "records_count": 68
+  },
+  {
+    "position_id": "pos_razrabotchik_bekend_erp",
+    "title": "Разработчик. Бэкэнд (ERP)",
+    "records_count": 57
+  },
+  {
+    "position_id": "pos_voditel_kategorii_d_ekaterinburg",
+    "title": "Водитель категории Д. Екатеринбург",
+    "records_count": 50
+  },
+  {
+    "position_id": "pos_menedzher_po_rabote_s_klientami_meropriyatiya",
+    "title": "Менеджер по работе с клиентами. Мероприятия",
+    "records_count": 48
+  },
+  {
+    "position_id": "pos_logist_zakazy_dostavki",
+    "title": "Логист. Заказы доставки",
+    "records_count": 42
+  },
+  {
+    "position_id": "pos_razrabotchik_frontend",
+    "title": "Разработчик. Фронтенд",
+    "records_count": 36
+  },
+  {
+    "position_id": "pos_tehnicheskiy_administrator",
+    "title": "Технический администратор",
+    "records_count": 35
+  },
+  {
+    "position_id": "pos_logist_zakazy_dostavki_ural",
+    "title": "Логист. Заказы доставки. Урал",
+    "records_count": 34
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_vhod_postoyannye",
+    "title": "Менеджер по продажам. Вход. Постоянные",
+    "records_count": 34
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_vhod",
+    "title": "Менеджер по продажам. Вход",
+    "records_count": 33
+  },
+  {
+    "position_id": "pos_operator_elektronnogo_nabora_i_verstki",
+    "title": "Оператор электронного набора и верстки",
+    "records_count": 30
+  },
+  {
+    "position_id": "pos_pomoschnik_gen_direktora",
+    "title": "Помощник ген. директора",
+    "records_count": 29
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_krupnomu_biznesu_moskva",
+    "title": "Менеджер по продажам крупному бизнесу. Москва",
+    "records_count": 24
+  },
+  {
+    "position_id": "pos_specialist_po_kontrolyu_transporta_v_noch",
+    "title": "Специалист по контролю транспорта (в ночь)",
+    "records_count": 21
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_krupnomu_biznesu_povolzhe",
+    "title": "Менеджер по продажам крупному бизнесу. Поволжье",
+    "records_count": 20
+  },
+  {
+    "position_id": "pos_targetolog",
+    "title": "Таргетолог",
+    "records_count": 19
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_vhod_ekaterinburg",
+    "title": "Менеджер по продажам. Вход. Екатеринбург",
+    "records_count": 18
+  },
+  {
+    "position_id": "pos_menedzher_proekta_indiya",
+    "title": "Менеджер проекта: Индия",
+    "records_count": 15
+  },
+  {
+    "position_id": "pos_dispetcher_logist",
+    "title": "Диспетчер-логист",
+    "records_count": 15
+  },
+  {
+    "position_id": "pos_logist_zakazy_dostavki_rb",
+    "title": "Логист. Заказы доставки РБ",
+    "records_count": 14
+  },
+  {
+    "position_id": "pos_menedzher_proektov_razvitiya",
+    "title": "Менеджер проектов развития",
+    "records_count": 13
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_infobiznes",
+    "title": "Менеджер по продажам (Инфобизнес)",
+    "records_count": 13
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_krupnomu_biznesu_centr",
+    "title": "Менеджер по продажам крупному бизнесу. Центр",
+    "records_count": 11
+  },
+  {
+    "position_id": "pos_specialist_po_dokumentooborotu",
+    "title": "Специалист по документообороту",
+    "records_count": 11
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_meropriyatiya",
+    "title": "Менеджер по продажам. Мероприятия",
+    "records_count": 11
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_vhod_kvalifikaciya",
+    "title": "Менеджер по продажам. Вход. Квалификация",
+    "records_count": 10
+  },
+  {
+    "position_id": "pos_specialist_po_rabote_s_klientami_ds",
+    "title": "Специалист по работе с клиентами. ДС",
+    "records_count": 10
+  },
+  {
+    "position_id": "pos_pomoschnik_menedzhera_proektov_razvitiya",
+    "title": "Помощник менеджера проектов развития",
+    "records_count": 10
+  },
+  {
+    "position_id": "pos_konsultant",
+    "title": "Консультант",
+    "records_count": 9
+  },
+  {
+    "position_id": "pos_zamestitel_kommercheskogo_direktora_po_operacionnoy_rabote",
+    "title": "Заместитель коммерческого директора по операционной работе",
+    "records_count": 9
+  },
+  {
+    "position_id": "pos_logist_zakazy_razovye",
+    "title": "Логист. Заказы разовые",
+    "records_count": 9
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_krupnomu_biznesu_kazan",
+    "title": "Менеджер по продажам крупному бизнесу. Казань",
+    "records_count": 9
+  },
+  {
+    "position_id": "pos_soprovozhdayuschiy_v_detskie_avtobusnye_tury",
+    "title": "Сопровождающий в детские автобусные туры",
+    "records_count": 9
+  },
+  {
+    "position_id": "pos_voditel_legkovoy_avtomobil_ekaterinburg",
+    "title": "Водитель (Легковой автомобиль) Екатеринбург",
+    "records_count": 9
+  },
+  {
+    "position_id": "pos_pomoschnik_tendernogo_specialista",
+    "title": "Помощник тендерного специалиста",
+    "records_count": 8
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_shkolnyy_avtobus",
+    "title": "Менеджер по продажам. Школьный автобус",
+    "records_count": 8
+  },
+  {
+    "position_id": "pos_videograf",
+    "title": "Видеограф",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_razrabotchik_mobile",
+    "title": "Разработчик (mobile)",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_pomoschnik_tehnicheskogo_direktora",
+    "title": "Помощник технического директора",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_razrabotchik_bekend_cms_i_sayty",
+    "title": "Разработчик. Бэкэнд (CMS и Сайты)",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_mehanik_po_vypusku_ts",
+    "title": "Механик по выпуску ТС",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_kontent_specialist",
+    "title": "Контент-специалист",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_specialist_po_kontrolyu_transporta_rb_den",
+    "title": "Специалист по контролю транспорта РБ (день)",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_ofis_menedzher",
+    "title": "Офис-менеджер",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_finansovyy_menedzher",
+    "title": "Финансовый менеджер",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_analitik_obschie_voprosy",
+    "title": "Аналитик. Общие вопросы",
+    "records_count": 7
+  },
+  {
+    "position_id": "pos_administrator_otdela_marketinga",
+    "title": "Администратор отдела маркетинга",
+    "records_count": 6
+  },
+  {
+    "position_id": "pos_logist_zakazy_razovye_postoyannye",
+    "title": "Логист. Заказы разовые. Постоянные",
+    "records_count": 6
+  },
+  {
+    "position_id": "pos_specialist_po_sboru_baz_dannyh",
+    "title": "Специалист по сбору баз данных",
+    "records_count": 6
+  },
+  {
+    "position_id": "pos_nachalnik_avtokolonny",
+    "title": "Начальник автоколонны",
+    "records_count": 6
+  },
+  {
+    "position_id": "pos_rukovoditel_filiala_taksoparka_ekaterinburg",
+    "title": "Руководитель филиала таксопарка. Екатеринбург",
+    "records_count": 6
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_holdingi",
+    "title": "Менеджер по продажам. Холдинги",
+    "records_count": 6
+  },
+  {
+    "position_id": "pos_mehanik_taksoparka_ekaterinburg",
+    "title": "Механик таксопарка. Екатеринбург",
+    "records_count": 6
+  },
+  {
+    "position_id": "pos_direktor_po_prodazham",
+    "title": "Директор по продажам",
+    "records_count": 5
+  },
+  {
+    "position_id": "pos_menedzher_po_rabote_s_klientami_ds",
+    "title": "Менеджер по работе с клиентами ДС",
+    "records_count": 5
+  },
+  {
+    "position_id": "pos_starshiy_kaznachey",
+    "title": "Старший казначей",
+    "records_count": 5
+  },
+  {
+    "position_id": "pos_specialist_po_kontekstnoy_reklame_dubay",
+    "title": "Специалист по контекстной рекламе. Дубай",
+    "records_count": 5
+  },
+  {
+    "position_id": "pos_specialist_aho",
+    "title": "Специалист АХО",
+    "records_count": 5
+  },
+  {
+    "position_id": "pos_ohrannik",
+    "title": "Охранник",
+    "records_count": 5
+  },
+  {
+    "position_id": "pos_avtoslesar",
+    "title": "Автослесарь",
+    "records_count": 5
+  },
+  {
+    "position_id": "pos_direktor_finansovo_yuridicheskogo_departamenta",
+    "title": "Директор финансово-юридического департамента",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_rukovoditel_tendernogo_otdela",
+    "title": "Руководитель тендерного отдела",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_direktor_po_it",
+    "title": "Директор по ИТ",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_menedzherov_po_prodazham_krupnomu_biznesu_centr",
+    "title": "Руководитель группы менеджеров по продажам крупному бизнесу. Центр",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_kontent_specialistov",
+    "title": "Руководитель группы контент-специалистов",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_menedzher_po_rabote_s_klientami_sobstvennyy_transport",
+    "title": "Менеджер по работе с клиентами. Собственный транспорт",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_starshiy_razrabotchik_frontend",
+    "title": "Старший разработчик. Фронтенд",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_smm_specialist",
+    "title": "СММ специалист",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_dubay_rb",
+    "title": "Менеджер по продажам. Дубай. РБ",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_menedzher_prilozheniya_po_ds",
+    "title": "Менеджер приложения по ДС",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_rabotnik_aho",
+    "title": "Работник АХО",
+    "records_count": 4
+  },
+  {
+    "position_id": "pos_direktor_po_hr",
+    "title": "Директор по HR",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_rukovoditel_dizayna_i_upakovki",
+    "title": "Руководитель дизайна и упаковки",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_buhgalter",
+    "title": "Бухгалтер",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_pomoschnik_direktora_po_prodazham",
+    "title": "Помощник директора по продажам",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_starshiy_tehnicheskiy_administrator",
+    "title": "Старший технический администратор",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_yurist",
+    "title": "Юрист",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_starshiy_finansovyy_menedzher",
+    "title": "Старший финансовый менеджер",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_specialist_po_adaptacii_i_obucheniyu",
+    "title": "Специалист по адаптации и обучению",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_specialist_finansovyh_proektov",
+    "title": "Специалист финансовых проектов",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_specialist_otdela_kontrolya_kachestva",
+    "title": "Специалист отдела контроля качества",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_prodazh_infobiznes",
+    "title": "Руководитель отдела продаж (Инфобизнес)",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_po_prodazham_meropriyatiy",
+    "title": "Руководитель отдела по продажам мероприятий",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_glavnyy_buhgalter",
+    "title": "Главный бухгалтер",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_seo_specialist",
+    "title": "SEO-специалист",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_perevodchik",
+    "title": "Переводчик",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_avitolog",
+    "title": "Авитолог",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_logist_zakazy_dostavki_povolzhe",
+    "title": "Логист. Заказы доставки. Поволжье",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_logist_dubay",
+    "title": "Логист. Дубай",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_logist_otdela_vedeniya",
+    "title": "Логист отдела ведения",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_yurist_proekty_razvitiya",
+    "title": "Юрист. Проекты развития",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_specialist_po_bdd",
+    "title": "Специалист по БДД",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_mehanik_taksoparka_kazan",
+    "title": "Механик таксопарка. Казань",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_rukovoditel_nayma_atp",
+    "title": "Руководитель найма АТП",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_menedzher_po_privlecheniyu_finansirovaniya",
+    "title": "Менеджер по привлечению финансирования",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_analitik_obschie_voprosy_po_transportnomu_napravleniyu",
+    "title": "Аналитик. Общие вопросы по транспортному направлению",
+    "records_count": 3
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_prodazh_roznica",
+    "title": "Руководитель отдела продаж. Розница",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_menedzherov_po_prodazham_krupnomu_biznesu_ural",
+    "title": "Руководитель группы менеджеров по продажам крупному бизнесу. Урал",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_prodazh_ekaterinburg",
+    "title": "Руководитель отдела продаж Екатеринбург",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_logist_zakazy_dostavki_centr",
+    "title": "Логист. Заказы доставки. Центр",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_menedzher_po_rabote_s_klyuchevymi_klientami_ds_kam",
+    "title": "Менеджер по работе с ключевыми клиентами. ДС (КАМ)",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_specialist_po_sozdaniyu_tehnicheskih_produktov",
+    "title": "Специалист по созданию технических продуктов",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_specialist_po_dokumentacii_deyatelnosti",
+    "title": "Специалист по документации деятельности",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_menedzher_proektov",
+    "title": "Менеджер проектов",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_voditel_bolshoy_avtobus_spb",
+    "title": "Водитель (Большой автобус) СПБ",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_specialist_po_transportu",
+    "title": "Специалист по транспорту",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_direktor_neyms",
+    "title": "Директор Неймс",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_otvetstvennyy_za_territorii_atp",
+    "title": "Ответственный за территории АТП",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_razvitiya_turisticheskogo_napravleniya",
+    "title": "Руководитель отдела развития туристического направления",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_rukovoditel_filiala_dubay",
+    "title": "Руководитель филиала Дубай",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_privlecheniya_finansirovaniya",
+    "title": "Руководитель отдела привлечения финансирования",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_marketolog_dlya_taksoparka",
+    "title": "Маркетолог для таксопарка",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_veb_dizayner",
+    "title": "Веб-дизайнер",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_pomoschnik_rukovoditelya_otdela_dizayna",
+    "title": "Помощник руководителя отдела дизайна",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_administrator_otdela_prodazh",
+    "title": "Администратор отдела продаж",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_dubay",
+    "title": "Менеджер по продажам. Дубай",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_buhgalter_pervichnoy_dokumentacii",
+    "title": "Бухгалтер первичной документации",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_specialist_po_obyazatelstvam",
+    "title": "Специалист по обязательствам",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_kaznachey",
+    "title": "Казначей",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_yurist_zemelno_imuschestvennye_voprosy",
+    "title": "Юрист. Земельно-имущественные вопросы",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_analitik_legkovye_ts",
+    "title": "Аналитик. Легковые ТС",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_analitik_prodazhi_roznicy",
+    "title": "Аналитик. Продажи розницы",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_finansovyy_kontroler",
+    "title": "Финансовый контролер",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_menedzher_mezhdunarodnyh_proektov",
+    "title": "Менеджер международных проектов",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_specialist_po_ekspluatacii",
+    "title": "Специалист по эксплуатации",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_kvalifikator_taksoparka",
+    "title": "Квалификатор таксопарка",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_menedzher_taksoparka_ekaterinburg",
+    "title": "Менеджер таксопарка. Екатеринбург",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_direktor_po_aho",
+    "title": "Директор по АХО",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_specialist_po_finansovomu_modelirovaniyu",
+    "title": "Специалист по финансовому моделированию",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_analitik_finansy",
+    "title": "Аналитик.Финансы",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_yurist_mezhdunarodnye_voprosy",
+    "title": "Юрист. Международные вопросы",
+    "records_count": 2
+  },
+  {
+    "position_id": "pos_uchreditel",
+    "title": "Учредитель",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_generalnyy_direktor",
+    "title": "Генеральный директор",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_operacionnyy_direktor",
+    "title": "Операционный директор",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_po_operacionnoy_effektivnosti",
+    "title": "Директор по операционной эффективности",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_proektnogo_ofisa",
+    "title": "Руководитель проектного офиса",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_po_razvitiyu",
+    "title": "Директор по развитию",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_po_marketingu",
+    "title": "Директор по маркетингу",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_po_vedeniyu_i_rabote_s_klientami_krupnogo_i_srednego_biznesa",
+    "title": "Руководитель отдела по ведению и работе с клиентами крупного и среднего бизнеса",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_telemarketinga",
+    "title": "Руководитель отдела телемаркетинга",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_filiala_mumbai",
+    "title": "Руководитель филиала Мумбаи",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_prodazh_krupnomu_biznesu",
+    "title": "Руководитель отдела продаж крупному бизнесу",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_finansovyy_direktor",
+    "title": "Финансовый директор",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_tehnicheskiy_lider_otdela_razrabotki",
+    "title": "Технический лидер отдела разработки",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_menedzherov_po_prodazham_vhod_postoyannye",
+    "title": "Руководитель группы менеджеров по продажам. Вход. Постоянные",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_po_klyuchevym_klientam_ds_kam",
+    "title": "Руководитель отдела по ключевым клиентам. ДС (КАМ)",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_filiala_g_gomel",
+    "title": "Директор филиала г. Гомель",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_administrativnoy_gruppy",
+    "title": "Руководитель административной группы",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_proektnyh_menedzherov",
+    "title": "Руководитель отдела проектных менеджеров",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_veduschiy_menedzher_proektov",
+    "title": "Ведущий менеджер проектов",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_po_razrabotke_saytov",
+    "title": "Руководитель отдела по разработке сайтов",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_veduschiy_specialist_po_adaptacii_i_obucheniyu",
+    "title": "Ведущий специалист по адаптации и обучению",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_zamestitel_direktora_po_ekspluatacii",
+    "title": "Заместитель директора по эксплуатации",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_infobiz_marketinga",
+    "title": "Руководитель отдела инфобиз маркетинга",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_kopirayter",
+    "title": "Копирайтер",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_kopirayter_ekaterinburg",
+    "title": "Копирайтер. Екатеринбург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_pr_specialist",
+    "title": "PR-специалист",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_pomoschnik_otdela_prodazh_vhod_postoyannye",
+    "title": "Помощник отдела продаж. Вход. Постоянные",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_veduschiy_menedzher_po_rabote_s_klientami_sobstvennyy_transport",
+    "title": "Ведущий менеджер по работе с клиентами. Собственный транспорт",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_prodazh_sobstvennogo_transporta",
+    "title": "Руководитель отдела продаж собственного транспорта",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_po_rabote_s_postavschikami",
+    "title": "Менеджер по работе с поставщиками",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_kurator_otdela_telemarketinga",
+    "title": "Куратор отдела телемаркетинга",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_menedzherov_po_prodazham_krupnomu_biznesu_povolzhe",
+    "title": "Руководитель группы менеджеров по продажам крупному бизнесу. Поволжье",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_pomoschnik_rukovoditelya_otdela_po_rabote_s_klyuchevymi_klientami",
+    "title": "Помощник руководителя отдела по работе с ключевыми клиентами",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_tehnicheskiy_specialist_gomel",
+    "title": "Технический специалист. Гомель",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_po_personalu_ofis",
+    "title": "Менеджер по персоналу. Офис",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_proekta_po_adaptacii_i_obucheniyu",
+    "title": "Руководитель проекта по адаптации и обучению",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_zamestitel_operacionnogo_direktora",
+    "title": "Заместитель операционного директора",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_kommerciya",
+    "title": "Аналитик. Коммерция",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_pomoschnik_direktora_po_transportu_po_tehnicheskim_voprosam",
+    "title": "Помощник директора по транспорту по техническим вопросам",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_dolzhnost_dlya_sluzhebnyh_celey_ne_pravit",
+    "title": "Должность для служебных целей (не править)",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_taksoparka",
+    "title": "Директор таксопарка",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_operacionnoy_effektivnosti",
+    "title": "Руководитель отдела операционной эффективности",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_rekrutinga_hr",
+    "title": "Руководитель отдела рекрутинга (HR)",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_filiala_krasnodar",
+    "title": "Руководитель филиала. Краснодар",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_filiala_g_sankt_peterburg",
+    "title": "Руководитель филиала г.Санкт-Петербург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_tehnicheskogo_administrirovaniya",
+    "title": "Руководитель отдела технического администрирования",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_kommercheskiy_direktor_po_mezhdunarodnomu_biznesu",
+    "title": "Коммерческий директор по международному бизнесу",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_yuridicheskogo_otdela",
+    "title": "Руководитель юридического отдела",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_upravlencheskogo_ucheta",
+    "title": "Руководитель отдела управленческого учета",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_voditel_brigadir_bolshie_avtobusy",
+    "title": "Водитель-Бригадир. Большие автобусы",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_upravlencheskogo_kontrolya",
+    "title": "Руководитель управленческого контроля",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_starshiy_logist_sobstvennyy_transport",
+    "title": "Старший логист. Собственный транспорт",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_remonta_ts",
+    "title": "Руководитель отдела ремонта ТС",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_regionalnoy_gruppy_menedzherov_po_prodazham_krupnomu_biznesu",
+    "title": "Руководитель региональной группы менеджеров по продажам крупному бизнесу",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_filiala_taksoparka_kazan",
+    "title": "Руководитель филиала таксопарка. Казань",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_po_prodazham_taksoparka",
+    "title": "Директор по продажам таксопарка",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_po_rabote_s_meropriyatiyami",
+    "title": "Руководитель отдела по работе с мероприятиями",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_starshiy_analitik_upravlenie_aktivami",
+    "title": "Старший аналитик. Управление активами",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_marketinga_taksopark",
+    "title": "Руководитель отдела маркетинга. Таксопарк",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_filiala_moskva",
+    "title": "Руководитель филиала. Москва",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_starshiy_analitik_kommerciya",
+    "title": "Старший аналитик. Коммерция",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_po_produktu_shkolnyy_avtobus",
+    "title": "Руководитель отдела по продукту Школьный автобус",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_realizacii_shkolnyy_avtobus",
+    "title": "Руководитель отдела реализации Школьный автобус",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_dispetcherskoy_sluzhby",
+    "title": "Руководитель диспетчерской службы",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_menedzherov_po_prodazham_krupnomu_biznesu_ekaterinburg",
+    "title": "Руководитель группы менеджеров по продажам крупному бизнесу. Екатеринбург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_aho",
+    "title": "Руководитель АХО",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_adaptacii_i_obucheniya",
+    "title": "Руководитель отдела адаптации и обучения",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_razrabotki",
+    "title": "Руководитель отдела разработки",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_po_rabote_s_klientami_ds",
+    "title": "Руководитель отдела по работе с клиентами. ДС",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_mladshiy_seo_specialist",
+    "title": "Младший SEO-специалист",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_kontent_menedzher",
+    "title": "Контент-менеджер",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_kontekstnoy_reklame",
+    "title": "Специалист по контекстной рекламе",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_po_prodazham_i_prodvizheniyu_dubay",
+    "title": "Менеджер по продажам и продвижению Дубай",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_konsultant_po_marketingu_neyms",
+    "title": "Консультант по маркетингу Неймс",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_marketolog_analitik",
+    "title": "Маркетолог-аналитик",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_dizayner_intererov",
+    "title": "Дизайнер интерьеров",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_sozdaniyu_mobilnyh_prilozheniy",
+    "title": "Специалист по созданию мобильных приложений",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_starshiy_menedzher_kvalifikator",
+    "title": "Старший менеджер-квалификатор",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_po_aktualizacii_postavschikov",
+    "title": "Менеджер по актуализации поставщиков",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_menedzherov_ekaterinburg",
+    "title": "Руководитель группы менеджеров. Екатеринбург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_filiala_sankt_peterburg",
+    "title": "Менеджер филиала Санкт-Петербург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_pomoschnik_otdela_prodazh_ds",
+    "title": "Помощник отдела продаж ДС",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_po_rabote_s_klyuchevymi_klientami",
+    "title": "Менеджер по работе с ключевыми клиентами",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_starshiy_soprovozhdayuschiy_turnapravleniya",
+    "title": "Старший сопровождающий турнаправления",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_logistiki",
+    "title": "Руководитель отдела логистики",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_administrator_otdela_razrabotki",
+    "title": "Администратор отдела разработки",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_uborschik",
+    "title": "Уборщик",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_yurist_obschie_voprosy",
+    "title": "Юрист. Общие вопросы",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_finansovyh_proektov",
+    "title": "Менеджер финансовых проектов",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_operator_1s",
+    "title": "Оператор 1С",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_dokumentooborotu_atp",
+    "title": "Специалист по документообороту АТП",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_operacionnyy_assistent",
+    "title": "Операционный ассистент",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_pomoschnik_rukovoditelya_yuridicheskogo_otdela",
+    "title": "Помощник руководителя юридического отдела",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_vedeniyu_ucheta_v_taksoparke",
+    "title": "Специалист по ведению учета в таксопарке",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_buhgalter_taksoparka",
+    "title": "Бухгалтер таксопарка",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_yurist_yur_struktura_i_intellektualnaya_sobstvennost",
+    "title": "Юрист. Юр. структура и интеллектуальная собственность",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_buh_yur_voprosam_po_mezhdunarodke",
+    "title": "Специалист по бух. юр. вопросам по международке",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_po_personalu_atp",
+    "title": "Менеджер по персоналу АТП",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_avtobusy",
+    "title": "Аналитик. Автобусы",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_sto_i_aktivy_holdinga",
+    "title": "Аналитик. СТО и активы холдинга",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_transport",
+    "title": "Аналитик.Транспорт",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_administrator_bd_dubay",
+    "title": "Администратор БД Дубай",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_administrirovaniyu_stran",
+    "title": "Специалист по администрированию стран",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_mezhdunarodnogo_napravleniya_i_tenderov",
+    "title": "Аналитик международного направления и тендеров",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_investor",
+    "title": "Инвестор",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_dostavka_sotrudnikov",
+    "title": "Аналитик. Доставка сотрудников",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_starshiy_specialist_po_zapusku_stran",
+    "title": "Старший специалист по запуску стран",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_avtomatizaciya_i_robotizaciya_marketinga",
+    "title": "Аналитик. Автоматизация и роботизация маркетинга",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_upravlenie_personalom",
+    "title": "Аналитик. Управление персоналом",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_starshiy_specialist_po_administrirovaniyu",
+    "title": "Старший специалист по администрированию",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_adaptaciya_i_obuchenie",
+    "title": "Аналитик. Адаптация и обучение",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_vedenie_postoyannyh_klientov_dostavki",
+    "title": "Аналитик. Ведение постоянных клиентов доставки",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_avtobusy_stykovki",
+    "title": "Аналитик. Автобусы. Стыковки",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_dispetcher_logist_sobstvennogo_ts",
+    "title": "Диспетчер-логист собственного ТС",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_konsultant_po_transportu",
+    "title": "Консультант по транспорту",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_pomoschnik_direktora_po_transportu",
+    "title": "Помощник директора по транспорту",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_zamestitel_direktora_atp_ekaterinburg",
+    "title": "Заместитель директора АТП. Екатеринбург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_remontu_ts",
+    "title": "Специалист по ремонту ТС",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_administrator_taksoparka",
+    "title": "Администратор таксопарка",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_zamestitel_rukovoditelya_taksoparka_ekaterinburg",
+    "title": "Заместитель руководителя таксопарка. Екатеринбург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_taksoparka_kazan",
+    "title": "Менеджер таксопарка. Казань",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_brend_menedzher_neyms",
+    "title": "Бренд менеджер Неймс",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_po_marketingu_neyms",
+    "title": "Директор по маркетингу Неймс",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_proizvodstva_neyms",
+    "title": "Директор производства Неймс",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_po_produktu_neyms",
+    "title": "Директор по продукту Неймс",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_pr_menedzher_neyms",
+    "title": "PR менеджер Неймс",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_biznes_assistent_gen_dira_neyms",
+    "title": "Бизнес ассистент ген дира Неймс",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_upravlyayuschiy_adornos",
+    "title": "Управляющий Адорнос",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_adornos",
+    "title": "Директор Адорнос",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_buhgalter_neyms",
+    "title": "Бухгалтер неймс",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_po_transportu_rf",
+    "title": "Директор по транспорту РФ",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_vneshniy_konsultant",
+    "title": "Внешний консультант",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_lidogeneracii",
+    "title": "Руководитель отдела лидогенерации",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_otdela_nachalnikov_kolonn",
+    "title": "Руководитель отдела начальников колонн",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_filiala_bangkok",
+    "title": "Руководитель филиала Бангкок",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_menedzherov_po_prodazham_holdingi",
+    "title": "Руководитель группы менеджеров по продажам. Холдинги",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_gruppy_menedzherov_po_prodazham_roznica_ekaterinburg",
+    "title": "Руководитель группы менеджеров по продажам. Розница. Екатеринбург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_timlid_ofisnogo_nayma",
+    "title": "Тимлид офисного найма",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_razvitiyu_sto",
+    "title": "Специалист по развитию СТО",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_direktor_filiala_ekaterinburg",
+    "title": "Директор филиала Екатеринбург",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_internet_marketolog",
+    "title": "Интернет-маркетолог",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_vizualizator_dizayna_intererov",
+    "title": "Визуализатор дизайна интерьеров",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_menedzher_po_tenderam_dostavka",
+    "title": "Менеджер по тендерам. Доставка",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_kadrovomu_uchetu",
+    "title": "Специалист по кадровому учету",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_yurist_rabota_s_zadolzhennostyu_i_strahovymi_kompaniyami",
+    "title": "Юрист. Работа с задолженностью и страховыми компаниями",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_buhgalter_po_zarabotnoy_plate",
+    "title": "Бухгалтер по заработной плате",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_buhgalter_po_bankovskim_vypiskam_i_kasse",
+    "title": "Бухгалтер по банковским выпискам и кассе",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_analitik_metodologiya_kommercii",
+    "title": "Аналитик. Методология коммерции",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_rukovoditel_proekta_po_vnedreniyu_ai",
+    "title": "Руководитель проекта по внедрению AI",
+    "records_count": 1
+  },
+  {
+    "position_id": "pos_specialist_po_uchetu_i_dokumentooborotu_atp",
+    "title": "Специалист по учету и документообороту АТП",
+    "records_count": 1
+  }
+]

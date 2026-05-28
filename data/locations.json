@@ -1,0 +1,728 @@
+[
+  {
+    "location_id": "loc_rossiya_ekaterinburg",
+    "country": "Россия",
+    "city": "Екатеринбург",
+    "records_count": 821
+  },
+  {
+    "location_id": "loc_belarus_gomel",
+    "country": "Беларусь",
+    "city": "Гомель",
+    "records_count": 236
+  },
+  {
+    "location_id": "loc_belarus_minsk",
+    "country": "Беларусь",
+    "city": "Минск",
+    "records_count": 98
+  },
+  {
+    "location_id": "loc_rossiya_moskva",
+    "country": "Россия",
+    "city": "Москва",
+    "records_count": 77
+  },
+  {
+    "location_id": "loc_belarus_brest",
+    "country": "Беларусь",
+    "city": "Брест",
+    "records_count": 30
+  },
+  {
+    "location_id": "loc_belarus_vitebsk",
+    "country": "Беларусь",
+    "city": "Витебск",
+    "records_count": 22
+  },
+  {
+    "location_id": "loc_belarus_mozyr",
+    "country": "Беларусь",
+    "city": "Мозырь",
+    "records_count": 22
+  },
+  {
+    "location_id": "loc_rossiya_kazan",
+    "country": "Россия",
+    "city": "Казань",
+    "records_count": 22
+  },
+  {
+    "location_id": "loc_belarus_mogilev",
+    "country": "Беларусь",
+    "city": "Могилев",
+    "records_count": 19
+  },
+  {
+    "location_id": "loc_belarus_grodno",
+    "country": "Беларусь",
+    "city": "Гродно",
+    "records_count": 17
+  },
+  {
+    "location_id": "loc_rossiya_ivanovo",
+    "country": "Россия",
+    "city": "Иваново",
+    "records_count": 15
+  },
+  {
+    "location_id": "loc_belarus_bobruysk",
+    "country": "Беларусь",
+    "city": "Бобруйск",
+    "records_count": 14
+  },
+  {
+    "location_id": "loc_belarus_baranovichi",
+    "country": "Беларусь",
+    "city": "Барановичи",
+    "records_count": 12
+  },
+  {
+    "location_id": "loc_rossiya_sankt_peterburg",
+    "country": "Россия",
+    "city": "Санкт-Петербург",
+    "records_count": 11
+  },
+  {
+    "location_id": "loc_belarus_lida",
+    "country": "Беларусь",
+    "city": "Лида",
+    "records_count": 10
+  },
+  {
+    "location_id": "loc_belarus_rechica",
+    "country": "Беларусь",
+    "city": "Речица",
+    "records_count": 10
+  },
+  {
+    "location_id": "loc_belarus_pinsk",
+    "country": "Беларусь",
+    "city": "Пинск",
+    "records_count": 10
+  },
+  {
+    "location_id": "loc_oae_dubay",
+    "country": "ОАЭ",
+    "city": "Дубай",
+    "records_count": 10
+  },
+  {
+    "location_id": "loc_belarus_zhlobin",
+    "country": "Беларусь",
+    "city": "Жлобин",
+    "records_count": 8
+  },
+  {
+    "location_id": "loc_belarus_polock",
+    "country": "Беларусь",
+    "city": "Полоцк",
+    "records_count": 7
+  },
+  {
+    "location_id": "loc_belarus_kalinkovichi",
+    "country": "Беларусь",
+    "city": "Калинковичи",
+    "records_count": 6
+  },
+  {
+    "location_id": "loc_rossiya_rostov_na_donu",
+    "country": "Россия",
+    "city": "Ростов-на-Дону",
+    "records_count": 5
+  },
+  {
+    "location_id": "loc_belarus_borisov",
+    "country": "Беларусь",
+    "city": "Борисов",
+    "records_count": 5
+  },
+  {
+    "location_id": "loc_rossiya_krasnodar",
+    "country": "Россия",
+    "city": "Краснодар",
+    "records_count": 4
+  },
+  {
+    "location_id": "loc_belarus_novopolock",
+    "country": "Беларусь",
+    "city": "Новополоцк",
+    "records_count": 4
+  },
+  {
+    "location_id": "loc_belarus_orsha",
+    "country": "Беларусь",
+    "city": "Орша",
+    "records_count": 4
+  },
+  {
+    "location_id": "loc_rossiya_novosibirsk",
+    "country": "Россия",
+    "city": "Новосибирск",
+    "records_count": 4
+  },
+  {
+    "location_id": "loc_rossiya_berezovskiy",
+    "country": "Россия",
+    "city": "Березовский",
+    "records_count": 4
+  },
+  {
+    "location_id": "loc_belarus_svetlogorsk",
+    "country": "Беларусь",
+    "city": "Светлогорск",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_rossiya_vladimir",
+    "country": "Россия",
+    "city": "Владимир",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_rossiya_perm",
+    "country": "Россия",
+    "city": "Пермь",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_rossiya_chelyabinsk",
+    "country": "Россия",
+    "city": "Челябинск",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_rossiya_ufa",
+    "country": "Россия",
+    "city": "Уфа",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_rossiya_voronezh",
+    "country": "Россия",
+    "city": "Воронеж",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_belarus_osipovichi",
+    "country": "Беларусь",
+    "city": "Осиповичи",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_belarus_molodechno",
+    "country": "Беларусь",
+    "city": "Молодечно",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_belarus_kobrin",
+    "country": "Беларусь",
+    "city": "Кобрин",
+    "records_count": 3
+  },
+  {
+    "location_id": "loc_rossiya_bogdanovich",
+    "country": "Россия",
+    "city": "Богданович",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_rossiya_lipeck",
+    "country": "Россия",
+    "city": "Липецк",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_rossiya_orenburg",
+    "country": "Россия",
+    "city": "Оренбург",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_rossiya_astrahan",
+    "country": "Россия",
+    "city": "Астрахань",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_rossiya_balashiha",
+    "country": "Россия",
+    "city": "Балашиха",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_rossiya_krasnoyarsk",
+    "country": "Россия",
+    "city": "Красноярск",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_rossiya_tula",
+    "country": "Россия",
+    "city": "Тула",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_rossiya_degtyarsk",
+    "country": "Россия",
+    "city": "Дегтярск",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_belarus_stolin",
+    "country": "Беларусь",
+    "city": "Столин",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_belarus_volkovysk",
+    "country": "Беларусь",
+    "city": "Волковыск",
+    "records_count": 2
+  },
+  {
+    "location_id": "loc_indiya_mumbai",
+    "country": "Индия",
+    "city": "Мумбаи",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_petrozavodsk",
+    "country": "Россия",
+    "city": "Петрозаводск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_nizhniy_tagil",
+    "country": "Россия",
+    "city": "Нижний Тагил",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_shklov",
+    "country": "Беларусь",
+    "city": "Шклов",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_odincovo",
+    "country": "Россия",
+    "city": "Одинцово",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_serpuhov",
+    "country": "Россия",
+    "city": "Серпухов",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_asbest",
+    "country": "Россия",
+    "city": "Асбест",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_kartaly",
+    "country": "Россия",
+    "city": "Карталы",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_verhnyaya_tura",
+    "country": "Россия",
+    "city": "Верхняя Тура",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_artemovskiy",
+    "country": "Россия",
+    "city": "Артемовский",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_volgorechensk",
+    "country": "Россия",
+    "city": "Волгореченск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_bryansk",
+    "country": "Россия",
+    "city": "Брянск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_malgobek",
+    "country": "Россия",
+    "city": "Малгобек",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_slonim",
+    "country": "Беларусь",
+    "city": "Слоним",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_polsha_varshava",
+    "country": "Польша",
+    "city": "Варшава",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_lobnya",
+    "country": "Россия",
+    "city": "Лобня",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_izhevsk",
+    "country": "Россия",
+    "city": "Ижевск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_muravlenko",
+    "country": "Россия",
+    "city": "Муравленко",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_braziliya_san_paulu",
+    "country": "Бразилия",
+    "city": "Сан-Паулу",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_georgievsk",
+    "country": "Россия",
+    "city": "Георгиевск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_samara",
+    "country": "Россия",
+    "city": "Самара",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_franciya_por_la_nuvel",
+    "country": "Франция",
+    "city": "Пор-ла-Нувель",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_vologda",
+    "country": "Россия",
+    "city": "Вологда",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_irkutsk",
+    "country": "Россия",
+    "city": "Иркутск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_dobrush",
+    "country": "Беларусь",
+    "city": "Добруш",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_ulyanovsk",
+    "country": "Россия",
+    "city": "Ульяновск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_glubokoe",
+    "country": "Беларусь",
+    "city": "Глубокое",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_fanipol",
+    "country": "Беларусь",
+    "city": "Фаниполь",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_tyumen",
+    "country": "Россия",
+    "city": "Тюмень",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_domodedovo",
+    "country": "Россия",
+    "city": "Домодедово",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_cheboksary",
+    "country": "Россия",
+    "city": "Чебоксары",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_naberezhnye_chelny",
+    "country": "Россия",
+    "city": "Набережные Челны",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_penza",
+    "country": "Россия",
+    "city": "Пенза",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_nizhniy_novgorod",
+    "country": "Россия",
+    "city": "Нижний Новгород",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_ryazan",
+    "country": "Россия",
+    "city": "Рязань",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_saratov",
+    "country": "Россия",
+    "city": "Саратов",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_zelenyy_bor",
+    "country": "Беларусь",
+    "city": "Зеленый Бор",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_mikashevichi",
+    "country": "Беларусь",
+    "city": "Микашевичи",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_mortka",
+    "country": "Россия",
+    "city": "Мортка",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_soligorsk",
+    "country": "Беларусь",
+    "city": "Солигорск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_puschino",
+    "country": "Россия",
+    "city": "Пущино",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_braslav",
+    "country": "Беларусь",
+    "city": "Браслав",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_novorossiysk",
+    "country": "Россия",
+    "city": "Новороссийск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_miory",
+    "country": "Беларусь",
+    "city": "Миоры",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_vidnoe",
+    "country": "Россия",
+    "city": "Видное",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_tomilino",
+    "country": "Россия",
+    "city": "Томилино",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_hanty_mansiysk",
+    "country": "Россия",
+    "city": "Ханты-Мансийск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_troick_msk",
+    "country": "Россия",
+    "city": "Троицк (Мск)",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_krichev",
+    "country": "Беларусь",
+    "city": "Кричев",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_beloozersk",
+    "country": "Беларусь",
+    "city": "Белоозёрск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_slobudka",
+    "country": "Беларусь",
+    "city": "Слобудка",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_byhov",
+    "country": "Беларусь",
+    "city": "Быхов",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_shatura",
+    "country": "Россия",
+    "city": "Шатура",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_novogrudok",
+    "country": "Беларусь",
+    "city": "Новогрудок",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_ive",
+    "country": "Беларусь",
+    "city": "Ивье",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_oshmyany",
+    "country": "Беларусь",
+    "city": "Ошмяны",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_borovlyany",
+    "country": "Беларусь",
+    "city": "Боровляны",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_rogachev",
+    "country": "Беларусь",
+    "city": "Рогачев",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_sredneuralsk",
+    "country": "Россия",
+    "city": "Среднеуральск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_d_bolshoe_sedelnikovo",
+    "country": "Россия",
+    "city": "д. Большое Седельниково",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_sysert",
+    "country": "Россия",
+    "city": "Сысерть",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_verhnyaya_pyshma",
+    "country": "Россия",
+    "city": "Верхняя Пышма",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_tailand_bangkok",
+    "country": "Таиланд",
+    "city": "Бангкок",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_uzbekistan_tashkent",
+    "country": "Узбекистан",
+    "city": "Ташкент",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_krasnouralsk",
+    "country": "Россия",
+    "city": "Красноуральск",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_tumilovichi",
+    "country": "Беларусь",
+    "city": "Тумиловичи",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_mosty",
+    "country": "Беларусь",
+    "city": "Мосты",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_davlekanovo",
+    "country": "Россия",
+    "city": "Давлеканово",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_chausy",
+    "country": "Беларусь",
+    "city": "Чаусы",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_vileyka",
+    "country": "Беларусь",
+    "city": "Вилейка",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_belarus_luninec",
+    "country": "Беларусь",
+    "city": "Лунинец",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_serbiya_belgrad",
+    "country": "Сербия",
+    "city": "Белград",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_revda",
+    "country": "Россия",
+    "city": "Ревда",
+    "records_count": 1
+  },
+  {
+    "location_id": "loc_rossiya_polevskoy",
+    "country": "Россия",
+    "city": "Полевской",
+    "records_count": 1
+  }
+]
