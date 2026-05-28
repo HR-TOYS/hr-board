@@ -13,9 +13,12 @@
     .tab:hover { background: rgba(255,255,255,0.08); color: white; }
     .tab.active { background: #7c3aed; color: white; font-weight: 800; }
     .chip { border: 1px solid #e5e7eb; border-radius: 999px; padding: 10px 14px; background: white; font-size: 14px; }
-    select { outline: none; background: transparent; font-weight: 700; color: #0f172a; cursor: pointer; }
+    select { outline: none; background: transparent; font-weight: 700; color: #0f172a; cursor: pointer; max-width: 260px; }
     .kpi-pill { margin-top: 16px; display: inline-block; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 800; }
     .muted { color: #64748b; }
+    .linklike { color: #6d28d9; font-weight: 800; cursor: pointer; }
+    .linklike:hover { text-decoration: underline; }
+    .badge { display: inline-block; border-radius: 999px; padding: 5px 10px; font-size: 12px; font-weight: 800; }
   </style>
 </head>
 <body>
@@ -32,9 +35,9 @@
 
   <main class="flex-1 p-6 lg:p-8">
     <section class="rounded-[32px] bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-400 p-8 lg:p-10 text-white shadow-2xl">
-      <div class="text-sm uppercase tracking-[0.3em] text-white/70">Executive Dashboard</div>
+      <div class="text-sm uppercase tracking-[0.3em] text-white/70">HR Dashboard</div>
       <h2 class="mt-4 text-4xl lg:text-5xl font-black">Аналитика персонала 2021–2026</h2>
-      <p class="mt-4 max-w-3xl text-lg text-white/90">Интерактивный HR-дашборд на реальных JSON-данных из Excel.</p>
+      <p class="mt-4 max-w-3xl text-lg text-white/90">Интерактивный HR-дашборд на JSON-данных из Excel: численность, текучесть, руководители, состав команды и география.</p>
     </section>
 
     <section class="mt-6 card">
@@ -43,7 +46,7 @@
         <label class="chip">Год: <select id="yearFilter"></select></label>
         <label class="chip">Сравнить с: <select id="compareFilter"></select></label>
         <label class="chip">Департамент: <select id="departmentFilter"><option>Все</option></select></label>
-        <label class="chip">Тип: <select id="employmentFilter"><option>Штатные</option><option>Все</option><option>Аутсорсинг / неполная занятость</option></select></label>
+        <label class="chip">Тип занятости: <select id="employmentFilter"><option>Штатные</option><option>Все</option><option>Аутсорсинг / неполная занятость</option></select></label>
       </div>
     </section>
 
@@ -58,25 +61,27 @@
 </div>
 
 <script>
-const tabs = ['Обзор', 'Текучесть', 'Оргструктура', 'Workforce', 'География'];
+const tabs = ['Обзор', 'Текучесть', 'Оргструктура', 'Состав команды', 'География'];
 let activeTab = 'Обзор';
 let charts = [];
-let data = {
-  monthly: [],
-  departments: [],
-  employees: [],
-  events: [],
-  locations: [],
-  issues: [],
-  summary: {}
+let data = { monthly: [], departments: [], employees: [], events: [], locations: [], issues: [], summary: {} };
+const monthNames = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
+const employmentAliases = {
+  staff: ['employee', 'active', 'штат', 'штатный', 'real_employee'],
+  nonCore: ['contractor', 'outsourcer', 'consultant', 'part_time', 'contractor_or_part_time', 'аутсорсинг', 'неполная занятость']
 };
 
-const monthNames = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
-
-async function loadJson(path, fallback) {
+async function loadJson(path) {
   const response = await fetch(path, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Не найден файл: ${path}`);
   return await response.json();
+}
+
+async function tryLoadJson(paths, fallback) {
+  for (const path of paths) {
+    try { return await loadJson(path); } catch(e) {}
+  }
+  return fallback;
 }
 
 async function loadData() {
@@ -85,9 +90,9 @@ async function loadData() {
     data.departments = await loadJson('data/department_snapshots.json');
     data.employees = await loadJson('data/employees.json');
     data.events = await loadJson('data/employee_events.json');
-    data.locations = await loadJson('data/location_snapshots.json');
-    data.issues = await loadJson('data/data_quality_issues.json');
-    data.summary = await loadJson('data/etl_summary.json');
+    data.locations = await tryLoadJson(['data/location_snapshots.json', 'data/locations_snapshots.json'], []);
+    data.issues = await tryLoadJson(['data/data_quality_issues.json'], []);
+    data.summary = await tryLoadJson(['data/etl_summary.json'], {});
     document.getElementById('statusMessage').style.display = 'none';
     initializeFilters();
     render();
@@ -95,79 +100,124 @@ async function loadData() {
     document.getElementById('statusMessage').innerHTML = `
       <div class="text-red-700 font-black">Не удалось загрузить JSON-данные</div>
       <div class="mt-2 text-sm text-red-600">${error.message}</div>
-      <div class="mt-4 text-sm muted">Проверь, что файлы лежат прямо в папке <b>data/</b>, например <b>data/monthly_snapshots.json</b>, а не внутри вложенной папки.</div>
-    `;
+      <div class="mt-4 text-sm muted">Проверь, что файлы лежат прямо в папке <b>data/</b>, например <b>data/monthly_snapshots.json</b>.</div>`;
   }
 }
 
-function years() {
-  return [...new Set(data.monthly.map(x => Number(x.year)))].sort((a,b) => b-a);
-}
-
+function num(v) { return Number(v || 0); }
+function clean(v) { return (v === undefined || v === null || v === '❌') ? '' : String(v).trim(); }
+function years() { return [...new Set(data.monthly.map(x => Number(x.year)).filter(Boolean))].sort((a,b) => b-a); }
 function selectedYear() { return Number(document.getElementById('yearFilter').value); }
 function compareYear() { return Number(document.getElementById('compareFilter').value); }
 function selectedDepartment() { return document.getElementById('departmentFilter').value; }
+function selectedEmployment() { return document.getElementById('employmentFilter').value; }
+
+function getDepartmentName(obj) {
+  return clean(obj.department_name || obj.current_department_name || obj.department || obj.departmentName || obj['Департамент']);
+}
+function getManagerName(obj) {
+  return clean(obj.current_manager_name || obj.manager_name || obj.manager || obj['Вышестоящий руководитель']);
+}
+function getEmployeeType(obj) {
+  return clean(obj.employment_type || obj.employee_type || obj.employee_type_raw || obj.status_raw || obj['Тип сотрудника']);
+}
+function getStatus(obj) { return clean(obj.status || obj.status_normalized || obj['Статус']).toLowerCase(); }
+function getHireDate(obj) { return clean(obj.hire_date || obj['Первый рабочий день']); }
+function getTerminationDate(obj) { return clean(obj.termination_date || obj['Последний рабочий день']); }
+function isRealEmployee(obj) { return obj.is_real_employee === true || obj.is_real_employee === 'true' || obj.is_real_employee === 'Да' || obj.is_real_employee === 1; }
+function isExcluded(obj) { return obj.exclude_from_core_metrics === true || obj.exclude_from_core_metrics === 'true'; }
+function isActiveOnEmployee(obj) { const s = getStatus(obj); return s === 'active' || s === 'on_leave' || s === 'работает' || s === 'в декрете'; }
+
+function matchesEmployment(obj) {
+  const filter = selectedEmployment();
+  if (filter === 'Все') return !isExcluded(obj);
+  const raw = getEmployeeType(obj).toLowerCase();
+  const status = getStatus(obj).toLowerCase();
+  const haystack = `${raw} ${status}`;
+  const isNonCore = employmentAliases.nonCore.some(x => haystack.includes(x));
+  if (filter === 'Аутсорсинг / неполная занятость') return !isExcluded(obj) && isNonCore;
+  return !isExcluded(obj) && isRealEmployee(obj) && !isNonCore;
+}
+
+function employeePassesFilters(emp) {
+  const dep = selectedDepartment();
+  if (dep !== 'Все' && getDepartmentName(emp) !== dep) return false;
+  return matchesEmployment(emp);
+}
+
+function snapshotPassesFilters(row) {
+  const dep = selectedDepartment();
+  if (dep !== 'Все' && getDepartmentName(row) !== dep) return false;
+  return true;
+}
+
+function dateInYear(dateStr, year) { return clean(dateStr).slice(0,4) === String(year); }
+
+function activeEmployeesForYearEnd(year) {
+  const end = `${year}-12-31`;
+  return data.employees.filter(emp => {
+    if (!employeePassesFilters(emp)) return false;
+    const hire = getHireDate(emp);
+    const term = getTerminationDate(emp);
+    if (hire && hire > end) return false;
+    if (term && term <= end) return false;
+    return isActiveOnEmployee(emp) || !term;
+  });
+}
+
+function employeesForYear(year) {
+  return data.employees.filter(emp => employeePassesFilters(emp) && (dateInYear(getHireDate(emp), year) || dateInYear(getTerminationDate(emp), year) || activeEmployeesForYearEnd(year).includes(emp)));
+}
 
 function initializeFilters() {
   const ys = years();
   const yearSelect = document.getElementById('yearFilter');
   const compareSelect = document.getElementById('compareFilter');
   yearSelect.innerHTML = ys.map(y => `<option>${y}</option>`).join('');
-  compareSelect.innerHTML = ys.filter(y => y !== ys[0]).map(y => `<option>${y}</option>`).join('');
+  compareSelect.innerHTML = ys.filter(y => y !== ys[0]).map(y => `<option>${y}</option>`).join('') || ys.map(y => `<option>${y}</option>`).join('');
 
-  const depNames = [...new Set(data.departments.map(d => d.department_name).filter(Boolean))].sort();
+  const depFromSnapshots = data.departments.map(getDepartmentName).filter(Boolean);
+  const depFromEmployees = data.employees.map(getDepartmentName).filter(Boolean);
+  const depNames = [...new Set([...depFromSnapshots, ...depFromEmployees])].sort();
   document.getElementById('departmentFilter').innerHTML = ['Все', ...depNames].map(d => `<option>${d}</option>`).join('');
-
-  document.getElementById('periodLabel').textContent = `${Math.min(...ys)}–${Math.max(...ys)} · real JSON`;
+  document.getElementById('periodLabel').textContent = `${Math.min(...ys)}–${Math.max(...ys)} · реальные JSON`;
 }
 
-function disposeCharts() {
-  charts.forEach(c => { try { c.dispose(); } catch(e) {} });
-  charts = [];
-}
-
-function makeChart(id, option) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const c = echarts.init(el);
-  c.setOption(option);
-  charts.push(c);
-}
+function disposeCharts() { charts.forEach(c => { try { c.dispose(); } catch(e) {} }); charts = []; }
+function makeChart(id, option) { const el = document.getElementById(id); if (!el) return; const c = echarts.init(el); c.setOption(option); charts.push(c); }
+function pct(current, previous) { if (!previous) return '0.0'; return (((current - previous) / previous) * 100).toFixed(1); }
 
 function renderTabs() {
-  const el = document.getElementById('tabs');
-  el.innerHTML = tabs.map(t => `<div class="tab ${t === activeTab ? 'active' : ''}" onclick="setTab('${t}')">${t}</div>`).join('');
+  document.getElementById('tabs').innerHTML = tabs.map(t => `<div class="tab ${t === activeTab ? 'active' : ''}" onclick="setTab('${t}')">${t}</div>`).join('');
 }
-
-function setTab(tab) {
-  activeTab = tab;
-  render();
-}
+function setTab(tab) { activeTab = tab; render(); }
 
 function monthRows(year) {
-  return data.monthly.filter(x => Number(x.year) === Number(year)).sort((a,b) => Number(a.month) - Number(b.month));
+  const dep = selectedDepartment();
+  if (dep === 'Все') return data.monthly.filter(x => Number(x.year) === Number(year)).sort((a,b) => Number(a.month) - Number(b.month));
+
+  const depRows = data.departments.filter(x => Number(x.year) === Number(year) && getDepartmentName(x) === dep).sort((a,b) => Number(a.month) - Number(b.month));
+  return depRows.map(r => ({
+    year: r.year,
+    month: r.month,
+    active_headcount_end: num(r.headcount_end || r.active_headcount_end),
+    hires: num(r.hires),
+    exits: num(r.exits),
+    turnover_rate_pct: num(r.turnover_rate_pct),
+    avg_tenure_days: num(r.avg_tenure_days)
+  }));
 }
 
 function yearSummary(year) {
   const rows = monthRows(year);
   if (!rows.length) return { hc: 0, hires: 0, exits: 0, turnover: 0, tenure: 0 };
   const last = rows[rows.length - 1];
-  const hires = rows.reduce((s,x) => s + Number(x.hires || 0), 0);
-  const exits = rows.reduce((s,x) => s + Number(x.exits || 0), 0);
-  const avgTurnover = rows.reduce((s,x) => s + Number(x.turnover_rate_pct || 0), 0) / rows.length;
-  const tenureDays = Number(last.avg_tenure_days || 0);
-  return {
-    hc: Number(last.active_headcount_end || 0),
-    hires,
-    exits,
-    turnover: avgTurnover,
-    tenure: tenureDays / 365
-  };
-}
-
-function pct(current, previous) {
-  if (!previous) return '0.0';
-  return (((current - previous) / previous) * 100).toFixed(1);
+  const hires = rows.reduce((s,x) => s + num(x.hires), 0);
+  const exits = rows.reduce((s,x) => s + num(x.exits), 0);
+  const turnoverRows = rows.filter(x => num(x.turnover_rate_pct) > 0);
+  const avgTurnover = turnoverRows.length ? turnoverRows.reduce((s,x) => s + num(x.turnover_rate_pct), 0) / turnoverRows.length : 0;
+  const tenureDays = num(last.avg_tenure_days);
+  return { hc: num(last.active_headcount_end || last.headcount_end), hires, exits, turnover: avgTurnover, tenure: tenureDays / 365 };
 }
 
 function renderKpis() {
@@ -175,89 +225,144 @@ function renderKpis() {
   const c = compareYear();
   const a = yearSummary(y);
   const b = yearSummary(c);
-
   const cards = [
-    { title: 'Активный headcount', value: a.hc, delta: `${pct(a.hc, b.hc)}% vs ${c}`, bg: '#ECFDF5', text: '#047857' },
-    { title: 'Найм за год', value: a.hires, delta: `${pct(a.hires, b.hires)}% vs ${c}`, bg: '#F5F3FF', text: '#6D28D9' },
-    { title: 'Увольнения за год', value: a.exits, delta: `${pct(a.exits, b.exits)}% vs ${c}`, bg: '#FEF2F2', text: '#B91C1C' },
-    { title: 'Средняя текучесть', value: `${a.turnover.toFixed(1)}%`, delta: `${(a.turnover - b.turnover).toFixed(1)} п.п. vs ${c}`, bg: '#ECFEFF', text: '#0E7490' }
+    { title: 'Активная численность', value: a.hc, delta: `${pct(a.hc, b.hc)}% к ${c}`, bg: '#ECFDF5', text: '#047857' },
+    { title: 'Найм за год', value: a.hires, delta: `${pct(a.hires, b.hires)}% к ${c}`, bg: '#F5F3FF', text: '#6D28D9' },
+    { title: 'Увольнения за год', value: a.exits, delta: `${pct(a.exits, b.exits)}% к ${c}`, bg: '#FEF2F2', text: '#B91C1C' },
+    { title: 'Средняя текучесть', value: `${a.turnover.toFixed(1)}%`, delta: `${(a.turnover - b.turnover).toFixed(1)} п.п. к ${c}`, bg: '#ECFEFF', text: '#0E7490' }
   ];
-
   document.getElementById('kpiGrid').innerHTML = cards.map(card => `
     <div class="card">
       <div class="text-sm text-gray-500">${card.title}</div>
       <div class="mt-3 text-5xl font-black text-slate-900">${card.value}</div>
       <div class="kpi-pill" style="background:${card.bg}; color:${card.text};">${card.delta}</div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function topDepartmentsByYear(year, metric='headcount_end', limit=8) {
-  const rows = data.departments.filter(x => Number(x.year) === Number(year) && Number(x.month) === 12);
-  return rows
-    .map(d => ({ name: d.department_name, value: Number(d[metric] || 0), turnover: Number(d.turnover_rate_pct || 0) }))
-    .filter(x => x.name && x.value > 0)
+function departmentRowsByYear(year, metric='headcount_end', limit=12) {
+  const selected = selectedDepartment();
+  const rows = data.departments.filter(x => Number(x.year) === Number(year) && Number(x.month) === 12 && (selected === 'Все' || getDepartmentName(x) === selected));
+  return rows.map(d => ({ name: getDepartmentName(d), value: num(d[metric] || d.headcount_end || d.active_headcount_end), turnover: num(d.turnover_rate_pct), hires: num(d.hires), exits: num(d.exits) }))
+    .filter(x => x.name && (x.value > 0 || x.turnover > 0 || x.hires > 0 || x.exits > 0))
     .sort((a,b) => b.value - a.value)
     .slice(0, limit);
 }
 
-function deptRowsForSelectedYear() {
-  const y = selectedYear();
-  const selected = selectedDepartment();
-  let rows = data.departments.filter(x => Number(x.year) === y);
-  if (selected !== 'Все') rows = rows.filter(x => x.department_name === selected);
-  return rows;
+function managerRows(year) {
+  const employees = activeEmployeesForYearEnd(year);
+  const byManager = {};
+  employees.forEach(emp => {
+    const manager = getManagerName(emp);
+    if (!manager) return;
+    if (!byManager[manager]) byManager[manager] = { name: manager, reports: 0, departments: {}, exits: 0 };
+    byManager[manager].reports += 1;
+    const d = getDepartmentName(emp) || 'Не указан';
+    byManager[manager].departments[d] = (byManager[manager].departments[d] || 0) + 1;
+  });
+
+  const exits = data.employees.filter(emp => employeePassesFilters(emp) && dateInYear(getTerminationDate(emp), year));
+  exits.forEach(emp => {
+    const manager = getManagerName(emp);
+    if (manager && byManager[manager]) byManager[manager].exits += 1;
+  });
+
+  return Object.values(byManager).map(m => {
+    const dept = Object.entries(m.departments).sort((a,b) => b[1]-a[1])[0]?.[0] || 'Не указан';
+    const turnover = m.reports ? (m.exits / m.reports) * 100 : 0;
+    const risk = m.reports >= 15 || turnover >= 8 ? 'Высокий' : (m.reports >= 10 || turnover >= 4 ? 'Средний' : 'Низкий');
+    return { ...m, dept, turnover, risk };
+  }).sort((a,b) => b.reports - a.reports);
+}
+
+function cityRows() {
+  const latest = Math.max(...data.locations.map(x => Number(x.year) * 100 + Number(x.month)).filter(Boolean));
+  let rows = data.locations.filter(x => Number(x.year) * 100 + Number(x.month) === latest);
+  const dep = selectedDepartment();
+  if (dep !== 'Все') rows = rows.filter(x => getDepartmentName(x) === dep || !getDepartmentName(x));
+  const agg = {};
+  rows.forEach(x => {
+    const k = clean(x.city || x.country || 'Не указано');
+    agg[k] = (agg[k] || 0) + num(x.headcount_end || x.active_headcount_end);
+  });
+  if (!Object.keys(agg).length) {
+    activeEmployeesForYearEnd(selectedYear()).forEach(emp => {
+      const k = clean(emp.city || emp.country || 'Не указано');
+      agg[k] = (agg[k] || 0) + 1;
+    });
+  }
+  return Object.entries(agg).map(([name,value]) => ({ name, value })).filter(x => x.value > 0).sort((a,b) => b.value - a.value);
 }
 
 function overview() {
   const y = selectedYear(), c = compareYear();
-  const summary = data.summary || {};
+  const current = yearSummary(y);
+  const managersOver15 = managerRows(y).filter(m => m.reports > 15).length;
+  const depLabel = selectedDepartment() === 'Все' ? 'по компании' : `по департаменту: ${selectedDepartment()}`;
   return `
     <div class="grid gap-6 xl:grid-cols-12">
-      <div class="card xl:col-span-8"><h3 class="text-2xl font-black text-slate-900">Рост компании</h3><p class="text-sm text-gray-500">Сравнение ${c} vs ${y}</p><div id="growthChart" style="height:420px"></div></div>
-      <div class="card xl:col-span-4"><h3 class="text-2xl font-black text-slate-900">Headcount по департаментам</h3><p class="text-sm text-gray-500">Топ департаментов на конец года</p><div id="deptChart" style="height:420px"></div></div>
-      <div class="card xl:col-span-5"><h3 class="text-2xl font-black text-slate-900">Текучесть по департаментам</h3><p class="text-sm text-gray-500">Топ по turnover</p><div id="turnoverChart" style="height:360px"></div></div>
-      <div class="card xl:col-span-7"><h3 class="text-2xl font-black text-slate-900">Сводка ETL</h3><p class="text-sm text-gray-500">Что загружено из Excel</p><div class="mt-6 grid gap-4 md:grid-cols-2">
-        <div class="rounded-3xl bg-violet-50 p-6"><b class="text-violet-900">${summary.employees_exported || data.employees.length} сотрудников</b><div class="mt-2 text-sm text-violet-700">Записей в employees.json</div></div>
-        <div class="rounded-3xl bg-cyan-50 p-6"><b class="text-cyan-900">${summary.events_exported || data.events.length} событий</b><div class="mt-2 text-sm text-cyan-700">Найм, увольнения и статусы</div></div>
-        <div class="rounded-3xl bg-amber-50 p-6"><b class="text-amber-900">${summary.months_generated || data.monthly.length} месяцев</b><div class="mt-2 text-sm text-amber-700">Monthly snapshots</div></div>
-        <div class="rounded-3xl bg-red-50 p-6"><b class="text-red-900">${summary.quality_issues || data.issues.length} data issues</b><div class="mt-2 text-sm text-red-700">Проверки качества данных</div></div>
+      <div class="card xl:col-span-8"><h3 class="text-2xl font-black text-slate-900">Рост численности</h3><p class="text-sm text-gray-500">Сравнение ${c} и ${y}, ${depLabel}</p><div id="growthChart" style="height:420px"></div></div>
+      <div class="card xl:col-span-4"><h3 class="text-2xl font-black text-slate-900">Численность по департаментам</h3><p class="text-sm text-gray-500">Топ департаментов на конец года</p><div id="deptChart" style="height:420px"></div></div>
+      <div class="card xl:col-span-5"><h3 class="text-2xl font-black text-slate-900">Текучесть по департаментам</h3><p class="text-sm text-gray-500">Топ по уровню текучести</p><div id="turnoverChart" style="height:360px"></div></div>
+      <div class="card xl:col-span-7"><h3 class="text-2xl font-black text-slate-900">Ключевые выводы</h3><p class="text-sm text-gray-500">Автоматическая сводка по выбранным фильтрам</p><div class="mt-6 space-y-4">
+        <div class="rounded-3xl bg-violet-50 p-6"><b class="text-violet-900">Численность: ${current.hc}</b><div class="mt-2 text-sm text-violet-700">Изменение к ${c}: ${pct(current.hc, yearSummary(c).hc)}%.</div></div>
+        <div class="rounded-3xl bg-cyan-50 p-6"><b class="text-cyan-900">Средняя текучесть: ${current.turnover.toFixed(1)}%</b><div class="mt-2 text-sm text-cyan-700">Показатель рассчитан по месячным снимкам выбранного года.</div></div>
+        <div class="rounded-3xl bg-amber-50 p-6"><b class="text-amber-900">Руководителей с охватом больше 15: <span class="linklike" onclick="setTab('Оргструктура')">${managersOver15}</span></b><div class="mt-2 text-sm text-amber-700">Нажмите на число, чтобы перейти к таблице руководителей.</div></div>
       </div></div>
     </div>`;
 }
 
 function attrition() {
   return `<div class="grid gap-6 xl:grid-cols-12">
-    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Динамика текучести</h3><p class="text-sm text-gray-500">По месяцам</p><div id="attritionTrend" style="height:420px"></div></div>
-    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Увольнения по месяцам</h3><p class="text-sm text-gray-500">Exits</p><div id="exitsChart" style="height:420px"></div></div>
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Динамика текучести</h3><p class="text-sm text-gray-500">По месяцам с учётом выбранных фильтров</p><div id="attritionTrend" style="height:420px"></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Увольнения по месяцам</h3><p class="text-sm text-gray-500">Количество увольнений</p><div id="exitsChart" style="height:420px"></div></div>
   </div>`;
 }
 
 function org() {
   const y = selectedYear();
-  const rows = topDepartmentsByYear(y, 'headcount_end', 12);
+  const rows = managerRows(y);
   return `<div class="grid gap-6 xl:grid-cols-12">
-    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Департаменты</h3><p class="text-sm text-gray-500">Headcount на конец ${y}</p><div class="mt-5 overflow-hidden rounded-2xl border border-slate-100"><table class="w-full text-left text-sm"><thead class="bg-slate-50"><tr><th class="p-4">Департамент</th><th>Headcount</th><th>Текучесть</th></tr></thead><tbody>${rows.map(r => `<tr class="border-t"><td class="p-4 font-bold">${r.name}</td><td>${r.value}</td><td>${r.turnover.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div>
-    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Структура по департаментам</h3><p class="text-sm text-gray-500">Top departments</p><div id="orgDeptChart" style="height:420px"></div></div>
+    <div class="card xl:col-span-8"><h3 class="text-2xl font-black">Руководители и нагрузка</h3><p class="text-sm text-gray-500">Количество сотрудников, текучесть и уровень риска</p><div class="mt-5 overflow-auto rounded-2xl border border-slate-100"><table class="w-full text-left text-sm"><thead class="bg-slate-50"><tr><th class="p-4">Руководитель</th><th>Департамент</th><th>Сотрудники</th><th>Текучесть</th><th>Риск</th></tr></thead><tbody>${rows.slice(0,30).map(m => `<tr class="border-t"><td class="p-4 font-bold"><span class="linklike" onclick="alert('Следующий шаг: карточка руководителя ${m.name}')">${m.name}</span></td><td>${m.dept}</td><td>${m.reports}</td><td>${m.turnover.toFixed(1)}%</td><td>${riskBadge(m.risk)}</td></tr>`).join('')}</tbody></table></div></div>
+    <div class="card xl:col-span-4"><h3 class="text-2xl font-black">Охват руководителя</h3><p class="text-sm text-gray-500">Сотрудников на руководителя</p><div id="spanChart" style="height:420px"></div></div>
   </div>`;
 }
 
+function riskBadge(risk) {
+  const colors = { 'Высокий': 'background:#FEF2F2;color:#B91C1C', 'Средний': 'background:#FFFBEB;color:#B45309', 'Низкий': 'background:#ECFDF5;color:#047857' };
+  return `<span class="badge" style="${colors[risk] || colors['Средний']}">${risk}</span>`;
+}
+
 function workforce() {
-  const active = data.employees.filter(e => e.status === 'active' || e.status === 'on_leave');
-  const male = active.filter(e => e.gender === 'male').length;
-  const female = active.filter(e => e.gender === 'female').length;
-  const unknown = Math.max(active.length - male - female, 0);
   return `<div class="grid gap-6 xl:grid-cols-12">
-    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Гендерное распределение</h3><p class="text-sm text-gray-500">Активные сотрудники</p><div id="genderChart" style="height:380px"></div></div>
-    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Качество данных</h3><p class="text-sm text-gray-500">Первые 8 issues</p><div class="mt-5 space-y-3">${data.issues.slice(0,8).map(i => `<div class="rounded-2xl bg-slate-50 p-4 text-sm"><b>${i.severity}</b> · ${i.field || ''}<div class="muted">${i.message || i.issue_type}</div></div>`).join('')}</div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Гендерное распределение</h3><p class="text-sm text-gray-500">Состав команды по активным сотрудникам</p><div id="genderChart" style="height:380px"></div></div>
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Распределение по стажу</h3><p class="text-sm text-gray-500">Группы стажа на конец выбранного года</p><div id="tenureChart" style="height:380px"></div></div>
   </div>`;
 }
 
 function geography() {
+  const cities = cityRows();
   return `<div class="grid gap-6 xl:grid-cols-12">
-    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">География</h3><p class="text-sm text-gray-500">Сотрудники по городам</p><div id="cityChart" style="height:420px"></div></div>
-    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Локации</h3><p class="text-sm text-gray-500">Топ городов</p><div id="countryChart" style="height:420px"></div></div>
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">География</h3><p class="text-sm text-gray-500">Все города по выбранным фильтрам</p><div id="cityChart" style="height:${Math.max(420, cities.length * 30)}px"></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Топ локаций</h3><p class="text-sm text-gray-500">Сводка по странам и городам</p><div id="countryChart" style="height:420px"></div></div>
   </div>`;
+}
+
+function tenureBands() {
+  const y = selectedYear();
+  const end = new Date(`${y}-12-31T00:00:00`);
+  const bands = { '<3 мес': 0, '3–6 мес': 0, '6–12 мес': 0, '1–2 года': 0, '2–5 лет': 0, '5+ лет': 0 };
+  activeEmployeesForYearEnd(y).forEach(emp => {
+    const hire = new Date(getHireDate(emp));
+    if (isNaN(hire)) return;
+    const days = (end - hire) / (1000*60*60*24);
+    if (days < 90) bands['<3 мес']++;
+    else if (days < 180) bands['3–6 мес']++;
+    else if (days < 365) bands['6–12 мес']++;
+    else if (days < 730) bands['1–2 года']++;
+    else if (days < 1825) bands['2–5 лет']++;
+    else bands['5+ лет']++;
+  });
+  return Object.entries(bands).map(([name,value]) => ({ name, value }));
 }
 
 function renderCharts() {
@@ -265,124 +370,49 @@ function renderCharts() {
   disposeCharts();
 
   if (activeTab === 'Обзор') {
-    makeChart('growthChart', {
-      color: ['#06b6d4', '#7c3aed'],
-      tooltip: { trigger: 'axis' },
-      legend: { data: [String(c), String(y)], top: 0 },
-      grid: { top: 55, left: 45, right: 25, bottom: 35 },
-      xAxis: { type: 'category', data: monthNames },
-      yAxis: { type: 'value' },
-      series: [
-        { name: String(c), type: 'line', smooth: true, data: monthRows(c).map(x => x.active_headcount_end), lineStyle: { width: 3 } },
-        { name: String(y), type: 'line', smooth: true, areaStyle: { opacity: 0.16 }, data: monthRows(y).map(x => x.active_headcount_end), lineStyle: { width: 4 } }
-      ]
-    });
-
-    const dep = topDepartmentsByYear(y, 'headcount_end', 8);
-    makeChart('deptChart', {
-      color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6', '#14b8a6', '#f97316'],
-      tooltip: { trigger: 'item' },
-      legend: { bottom: 0 },
-      series: [{ type: 'pie', radius: ['45%', '72%'], center: ['50%', '43%'], data: dep.map(d => ({ name: d.name, value: d.value })) }]
-    });
-
-    const turn = topDepartmentsByYear(y, 'headcount_end', 10).sort((a,b) => b.turnover - a.turnover).slice(0,8);
-    makeChart('turnoverChart', {
-      color: ['#f97316'],
-      tooltip: { trigger: 'axis' },
-      grid: { left: 140, right: 25, top: 25, bottom: 35 },
-      xAxis: { type: 'value' },
-      yAxis: { type: 'category', data: turn.map(d => d.name) },
-      series: [{ name: 'Текучесть %', type: 'bar', data: turn.map(d => Number(d.turnover.toFixed(1))), itemStyle: { borderRadius: [0, 10, 10, 0] } }]
-    });
+    makeChart('growthChart', { color: ['#06b6d4', '#7c3aed'], tooltip: { trigger: 'axis' }, legend: { data: [String(c), String(y)], top: 0 }, grid: { top: 55, left: 45, right: 25, bottom: 35 }, xAxis: { type: 'category', data: monthNames }, yAxis: { type: 'value' }, series: [ { name: String(c), type: 'line', smooth: true, data: monthRows(c).map(x => num(x.active_headcount_end)), lineStyle: { width: 3 } }, { name: String(y), type: 'line', smooth: true, areaStyle: { opacity: 0.16 }, data: monthRows(y).map(x => num(x.active_headcount_end)), lineStyle: { width: 4 } } ] });
+    const dep = departmentRowsByYear(y, 'headcount_end', 8);
+    makeChart('deptChart', { color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6', '#14b8a6', '#f97316'], tooltip: { trigger: 'item' }, legend: { bottom: 0 }, series: [{ type: 'pie', radius: ['45%', '72%'], center: ['50%', '43%'], data: dep.map(d => ({ name: d.name, value: d.value })) }] });
+    const turn = departmentRowsByYear(y, 'headcount_end', 20).sort((a,b) => b.turnover - a.turnover).slice(0,8).reverse();
+    makeChart('turnoverChart', { color: ['#f97316'], tooltip: { trigger: 'axis' }, grid: { left: 140, right: 25, top: 25, bottom: 35 }, xAxis: { type: 'value' }, yAxis: { type: 'category', data: turn.map(d => d.name) }, series: [{ name: 'Текучесть %', type: 'bar', data: turn.map(d => Number(d.turnover.toFixed(1))), itemStyle: { borderRadius: [0, 10, 10, 0] } }] });
   }
 
   if (activeTab === 'Текучесть') {
-    makeChart('attritionTrend', {
-      color: ['#06b6d4', '#7c3aed'],
-      tooltip: { trigger: 'axis' },
-      legend: { data: [String(c), String(y)], top: 0 },
-      grid: { top: 55, left: 45, right: 25, bottom: 35 },
-      xAxis: { type: 'category', data: monthNames },
-      yAxis: { type: 'value' },
-      series: [
-        { name: String(c), type: 'line', smooth: true, data: monthRows(c).map(x => Number((x.turnover_rate_pct || 0).toFixed(1))) },
-        { name: String(y), type: 'line', smooth: true, areaStyle: { opacity: 0.15 }, data: monthRows(y).map(x => Number((x.turnover_rate_pct || 0).toFixed(1))) }
-      ]
-    });
-
-    makeChart('exitsChart', {
-      color: ['#ef4444'],
-      tooltip: { trigger: 'axis' },
-      grid: { top: 35, left: 45, right: 25, bottom: 35 },
-      xAxis: { type: 'category', data: monthNames },
-      yAxis: { type: 'value' },
-      series: [{ name: 'Увольнения', type: 'bar', data: monthRows(y).map(x => x.exits), itemStyle: { borderRadius: [10,10,0,0] } }]
-    });
+    makeChart('attritionTrend', { color: ['#06b6d4', '#7c3aed'], tooltip: { trigger: 'axis' }, legend: { data: [String(c), String(y)], top: 0 }, grid: { top: 55, left: 45, right: 25, bottom: 35 }, xAxis: { type: 'category', data: monthNames }, yAxis: { type: 'value' }, series: [ { name: String(c), type: 'line', smooth: true, data: monthRows(c).map(x => Number(num(x.turnover_rate_pct).toFixed(1))) }, { name: String(y), type: 'line', smooth: true, areaStyle: { opacity: 0.15 }, data: monthRows(y).map(x => Number(num(x.turnover_rate_pct).toFixed(1))) } ] });
+    makeChart('exitsChart', { color: ['#ef4444'], tooltip: { trigger: 'axis' }, grid: { top: 35, left: 45, right: 25, bottom: 35 }, xAxis: { type: 'category', data: monthNames }, yAxis: { type: 'value' }, series: [{ name: 'Увольнения', type: 'bar', data: monthRows(y).map(x => num(x.exits)), itemStyle: { borderRadius: [10,10,0,0] } }] });
   }
 
   if (activeTab === 'Оргструктура') {
-    const rows = topDepartmentsByYear(y, 'headcount_end', 10).reverse();
-    makeChart('orgDeptChart', {
-      color: ['#7c3aed'],
-      tooltip: { trigger: 'axis' },
-      grid: { left: 150, right: 20, top: 30, bottom: 35 },
-      xAxis: { type: 'value' },
-      yAxis: { type: 'category', data: rows.map(r => r.name) },
-      series: [{ name: 'Headcount', type: 'bar', data: rows.map(r => r.value), itemStyle: { borderRadius: [0,10,10,0] } }]
-    });
+    const rows = managerRows(y).slice(0,15).reverse();
+    makeChart('spanChart', { color: ['#7c3aed'], tooltip: { trigger: 'axis' }, grid: { left: 135, right: 20, top: 30, bottom: 35 }, xAxis: { type: 'value' }, yAxis: { type: 'category', data: rows.map(r => r.name) }, series: [{ name: 'Сотрудники', type: 'bar', data: rows.map(r => r.reports), itemStyle: { borderRadius: [0,10,10,0] } }] });
   }
 
-  if (activeTab === 'Workforce') {
-    const active = data.employees.filter(e => e.status === 'active' || e.status === 'on_leave');
-    const male = active.filter(e => e.gender === 'male').length;
-    const female = active.filter(e => e.gender === 'female').length;
+  if (activeTab === 'Состав команды') {
+    const active = activeEmployeesForYearEnd(y);
+    const male = active.filter(e => clean(e.gender).toLowerCase() === 'male' || clean(e.gender).toLowerCase() === 'мужской').length;
+    const female = active.filter(e => clean(e.gender).toLowerCase() === 'female' || clean(e.gender).toLowerCase() === 'женский').length;
     const unknown = Math.max(active.length - male - female, 0);
-    makeChart('genderChart', {
-      color: ['#06b6d4', '#ec4899', '#94a3b8'],
-      tooltip: { trigger: 'item' },
-      legend: { bottom: 0 },
-      series: [{ type: 'pie', radius: ['48%','72%'], center: ['50%','43%'], data: [{ name: 'Мужчины', value: male }, { name: 'Женщины', value: female }, { name: 'Не указано', value: unknown }] }]
-    });
+    makeChart('genderChart', { color: ['#06b6d4', '#ec4899', '#94a3b8'], tooltip: { trigger: 'item' }, legend: { bottom: 0 }, series: [{ type: 'pie', radius: ['48%','72%'], center: ['50%','43%'], data: [{ name: 'Мужчины', value: male }, { name: 'Женщины', value: female }, { name: 'Не указано', value: unknown }] }] });
+    const tb = tenureBands();
+    makeChart('tenureChart', { color: ['#10b981'], tooltip: { trigger: 'axis' }, grid: { left: 45, right: 25, top: 30, bottom: 45 }, xAxis: { type: 'category', data: tb.map(x => x.name) }, yAxis: { type: 'value' }, series: [{ name: 'Сотрудники', type: 'bar', data: tb.map(x => x.value), itemStyle: { borderRadius: [10,10,0,0] } }] });
   }
 
   if (activeTab === 'География') {
-    const latestMonth = Math.max(...data.locations.map(x => Number(x.year) * 100 + Number(x.month)));
-    const locRows = data.locations.filter(x => Number(x.year) * 100 + Number(x.month) === latestMonth);
-    const cityRows = locRows.map(x => ({ name: x.city || x.country || 'Не указано', value: Number(x.headcount_end || 0) })).filter(x => x.value > 0).sort((a,b) => b.value-a.value).slice(0,10).reverse();
+    const cities = cityRows();
+    const shownCities = cities.slice().reverse();
     const countryAgg = {};
-    locRows.forEach(x => { const k = x.country || 'Не указано'; countryAgg[k] = (countryAgg[k] || 0) + Number(x.headcount_end || 0); });
+    activeEmployeesForYearEnd(y).forEach(emp => { const k = clean(emp.country || 'Не указано'); countryAgg[k] = (countryAgg[k] || 0) + 1; });
     const countryRows = Object.entries(countryAgg).map(([name,value]) => ({name,value})).sort((a,b)=>b.value-a.value).slice(0,8);
-
-    makeChart('cityChart', {
-      color: ['#06b6d4'],
-      tooltip: { trigger: 'axis' },
-      grid: { left: 125, right: 25, top: 30, bottom: 35 },
-      xAxis: { type: 'value' },
-      yAxis: { type: 'category', data: cityRows.map(x => x.name) },
-      series: [{ name: 'Сотрудники', type: 'bar', data: cityRows.map(x => x.value), itemStyle: { borderRadius: [0,10,10,0] } }]
-    });
-
-    makeChart('countryChart', {
-      color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444'],
-      tooltip: { trigger: 'item' },
-      legend: { bottom: 0 },
-      series: [{ type: 'pie', radius: ['45%','72%'], center: ['50%','43%'], data: countryRows }]
-    });
+    makeChart('cityChart', { color: ['#06b6d4'], tooltip: { trigger: 'axis' }, grid: { left: 135, right: 25, top: 30, bottom: 35 }, xAxis: { type: 'value' }, yAxis: { type: 'category', data: shownCities.map(x => x.name) }, series: [{ name: 'Сотрудники', type: 'bar', data: shownCities.map(x => x.value), itemStyle: { borderRadius: [0,10,10,0] } }] });
+    makeChart('countryChart', { color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6'], tooltip: { trigger: 'item' }, legend: { bottom: 0 }, series: [{ type: 'pie', radius: ['45%','72%'], center: ['50%','43%'], data: countryRows }] });
   }
 }
 
 function renderContent() {
-  const map = { 'Обзор': overview, 'Текучесть': attrition, 'Оргструктура': org, 'Workforce': workforce, 'География': geography };
+  const map = { 'Обзор': overview, 'Текучесть': attrition, 'Оргструктура': org, 'Состав команды': workforce, 'География': geography };
   document.getElementById('content').innerHTML = map[activeTab]();
 }
-
-function render() {
-  renderTabs();
-  renderKpis();
-  renderContent();
-  setTimeout(renderCharts, 0);
-}
+function render() { renderTabs(); renderKpis(); renderContent(); setTimeout(renderCharts, 0); }
 
 document.getElementById('yearFilter').addEventListener('change', render);
 document.getElementById('compareFilter').addEventListener('change', render);
@@ -393,4 +423,5 @@ loadData();
 </script>
 </body>
 </html>
+
 
