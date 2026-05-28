@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Board</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/recharts/umd/Recharts.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f4f7fb;
+      font-family: Inter, system-ui, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    const {
+      ResponsiveContainer,
+      AreaChart,
+      Area,
+      CartesianGrid,
+      XAxis,
+      YAxis,
+      Tooltip,
+      BarChart,
+      Bar,
+      PieChart,
+      Pie,
+      Cell,
+      Legend
+    } = Recharts;
+
+    const monthlyData = [
+      { month: 'Jan', hc2025: 420, hc2026: 520 },
+      { month: 'Feb', hc2025: 430, hc2026: 536 },
+      { month: 'Mar', hc2025: 448, hc2026: 548 },
+      { month: 'Apr', hc2025: 462, hc2026: 565 },
+      { month: 'May', hc2025: 478, hc2026: 581 },
+      { month: 'Jun', hc2025: 490, hc2026: 602 },
+    ];
+
+    const turnoverData = [
+      { name: 'Продажи', value: 4.1 },
+      { name: 'АТП', value: 3.4 },
+      { name: 'Маркетинг', value: 2.6 },
+      { name: 'HR', value: 1.9 },
+      { name: 'Разработка', value: 1.2 },
+    ];
+
+    const genderData = [
+      { name: 'Мужчины', value: 54 },
+      { name: 'Женщины', value: 46 },
+    ];
+
+    const COLORS = [
+      '#7C3AED',
+      '#06B6D4',
+      '#F59E0B',
+      '#10B981',
+      '#EF4444'
+    ];
+
+    function Card({ children }) {
+      return (
+        <div className="bg-white rounded-3xl shadow-sm p-6 border border-gray-100">
+          {children}
+        </div>
+      );
+    }
+
+    function KPI({ title, value, delta }) {
+      return (
+        <Card>
+          <div className="text-sm text-gray-500">{title}</div>
+
+          <div className="mt-3 text-4xl font-bold text-gray-900">
+            {value}
+          </div>
+
+          <div className="mt-3 inline-block rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700">
+            {delta}
+          </div>
+        </Card>
+      );
+    }
+
+    function App() {
+      return (
+        <div className="min-h-screen bg-[#f4f7fb] p-8">
+
+          <div className="mx-auto max-w-7xl">
+
+            <div className="mb-8 rounded-3xl bg-gradient-to-r from-violet-600 to-cyan-500 p-8 text-white shadow-xl">
+
+              <div className="text-sm uppercase tracking-widest text-white/70">
+                People Analytics
+              </div>
+
+              <h1 className="mt-3 text-5xl font-bold">
+                HR Board
+              </h1>
+
+              <p className="mt-4 max-w-2xl text-lg text-white/90">
+                Аналитика персонала 2021–2026
+              </p>
+
+            </div>
+
+            <div className="mb-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+              <KPI
+                title="Активный headcount"
+                value="602"
+                delta="+22.8% YoY"
+              />
+
+              <KPI
+                title="Текучесть"
+                value="1.8%"
+                delta="-0.4% vs 2025"
+              />
+
+              <KPI
+                title="Средний стаж"
+                value="2.4y"
+                delta="+0.3y"
+              />
+
+              <KPI
+                title="Средний span"
+                value="8.7"
+                delta="12 managers > 15"
+              />
+
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-12">
+
+              <div className="lg:col-span-8">
+
+                <Card>
+
+                  <div className="mb-4">
+                    <div className="text-xl font-semibold">
+                      Рост компании
+                    </div>
+
+                    <div className="text-sm text-gray-500">
+                      Сравнение 2025 vs 2026
+                    </div>
+                  </div>
+
+                  <div className="h-96">
+
+                    <ResponsiveContainer>
+
+                      <AreaChart data={monthlyData}>
+
+                        <defs>
+                          <linearGradient id="color2026" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#7C3AED" stopOpacity={0.35}/>
+                            <stop offset="95%" stopColor="#7C3AED" stopOpacity={0}/>
+                          </linearGradient>
+                        </defs>
+
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+
+                        <XAxis dataKey="month" />
+                        <YAxis />
+
+                        <Tooltip />
+                        <Legend />
+
+                        <Area
+                          type="monotone"
+                          dataKey="hc2025"
+                          name="2025"
+                          stroke="#06B6D4"
+                          fillOpacity={0}
+                          strokeWidth={3}
+                        />
+
+                        <Area
+                          type="monotone"
+                          dataKey="hc2026"
+                          name="2026"
+                          stroke="#7C3AED"
+                          fill="url(#color2026)"
+                          strokeWidth={4}
+                        />
+
+                      </AreaChart>
+
+                    </ResponsiveContainer>
+
+                  </div>
+
+                </Card>
+
+              </div>
+
+              <div className="lg:col-span-4">
+
+                <Card>
+
+                  <div className="mb-4">
+                    <div className="text-xl font-semibold">
+                      Текучесть по департаментам
+                    </div>
+
+                    <div className="text-sm text-gray-500">
+                      Monthly attrition
+                    </div>
+                  </div>
+
+                  <div className="h-96">
+
+                    <ResponsiveContainer>
+
+                      <BarChart data={turnoverData} layout="vertical">
+
+                        <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+
+                        <XAxis type="number" />
+                        <YAxis type="category" dataKey="name" width={90} />
+
+                        <Tooltip />
+                        <Legend />
+
+                        <Bar
+                          dataKey="value"
+                          name="Текучесть %"
+                          fill="#7C3AED"
+                          radius={[0, 12, 12, 0]}
+                        />
+
+                      </BarChart>
+
+                    </ResponsiveContainer>
+
+                  </div>
+
+                </Card>
+
+              </div>
+
+            </div>
+
+            <div className="mt-6 grid gap-6 lg:grid-cols-12">
+
+              <div className="lg:col-span-5">
+
+                <Card>
+
+                  <div className="mb-4">
+                    <div className="text-xl font-semibold">
+                      Гендерное распределение
+                    </div>
+
+                    <div className="text-sm text-gray-500">
+                      Workforce composition
+                    </div>
+                  </div>
+
+                  <div className="h-80">
+
+                    <ResponsiveContainer>
+
+                      <PieChart>
+
+                        <Pie
+                          data={genderData}
+                          dataKey="value"
+                          innerRadius={70}
+                          outerRadius={110}
+                          paddingAngle={4}
+                        >
+
+                          {genderData.map((entry, index) => (
+                            <Cell
+                              key={entry.name}
+                              fill={COLORS[index % COLORS.length]}
+                            />
+                          ))}
+
+                        </Pie>
+
+                        <Tooltip />
+                        <Legend />
+
+                      </PieChart>
+
+                    </ResponsiveContainer>
+
+                  </div>
+
+                </Card>
+
+              </div>
+
+              <div className="lg:col-span-7">
+
+                <Card>
+
+                  <div className="mb-4">
+                    <div className="text-xl font-semibold">
+                      Executive Insights
+                    </div>
+
+                    <div className="text-sm text-gray-500">
+                      Основные сигналы системы
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+
+                    <div className="rounded-2xl bg-violet-50 p-5">
+                      <div className="font-semibold text-violet-900">
+                        Рост численности +22.8%
+                      </div>
+
+                      <div className="mt-2 text-sm text-violet-700">
+                        Основной рост: Продажи, АТП и Разработка
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl bg-cyan-50 p-5">
+                      <div className="font-semibold text-cyan-900">
+                        Риск текучести в Продажах
+                      </div>
+
+                      <div className="mt-2 text-sm text-cyan-700">
+                        Attrition выше company average на 1.9%
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl bg-amber-50 p-5">
+                      <div className="font-semibold text-amber-900">
+                        12 перегруженных руководителей
+                      </div>
+
+                      <div className="mt-2 text-sm text-amber-700">
+                        Span of control > 15 сотрудников
+                      </div>
+                    </div>
+
+                  </div>
+
+                </Card>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+  </script>
+</body>
+</html>
