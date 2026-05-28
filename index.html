@@ -15,6 +15,7 @@
     .chip { border: 1px solid #e5e7eb; border-radius: 999px; padding: 10px 14px; background: white; font-size: 14px; }
     select { outline: none; background: transparent; font-weight: 700; color: #0f172a; cursor: pointer; }
     .kpi-pill { margin-top: 16px; display: inline-block; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 800; }
+    .muted { color: #64748b; }
   </style>
 </head>
 <body>
@@ -25,7 +26,7 @@
     <div class="mt-10 space-y-3" id="tabs"></div>
     <div class="mt-10 rounded-3xl bg-white/10 p-5 text-sm text-slate-300">
       <div class="font-bold text-white">Период данных</div>
-      <div class="mt-2">2021–2026 · mock version</div>
+      <div class="mt-2" id="periodLabel">Загрузка...</div>
     </div>
   </aside>
 
@@ -33,17 +34,22 @@
     <section class="rounded-[32px] bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-400 p-8 lg:p-10 text-white shadow-2xl">
       <div class="text-sm uppercase tracking-[0.3em] text-white/70">Executive Dashboard</div>
       <h2 class="mt-4 text-4xl lg:text-5xl font-black">Аналитика персонала 2021–2026</h2>
-      <p class="mt-4 max-w-3xl text-lg text-white/90">Интерактивный HR-дашборд: headcount, текучесть, удержание, менеджеры, структура и география.</p>
+      <p class="mt-4 max-w-3xl text-lg text-white/90">Интерактивный HR-дашборд на реальных JSON-данных из Excel.</p>
     </section>
 
     <section class="mt-6 card">
       <div class="flex flex-wrap gap-3 items-center">
         <div class="font-bold text-slate-700 mr-2">Фильтры</div>
-        <label class="chip">Год: <select id="yearFilter"><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option></select></label>
-        <label class="chip">Сравнить с: <select id="compareFilter"><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option></select></label>
-        <label class="chip">Департамент: <select id="departmentFilter"><option>Все</option><option>Продажи</option><option>АТП</option><option>Разработка</option><option>HR</option><option>Маркетинг</option></select></label>
+        <label class="chip">Год: <select id="yearFilter"></select></label>
+        <label class="chip">Сравнить с: <select id="compareFilter"></select></label>
+        <label class="chip">Департамент: <select id="departmentFilter"><option>Все</option></select></label>
         <label class="chip">Тип: <select id="employmentFilter"><option>Штатные</option><option>Все</option><option>Аутсорсинг / неполная занятость</option></select></label>
       </div>
+    </section>
+
+    <section id="statusMessage" class="mt-6 card">
+      <div class="text-slate-700 font-bold">Загружаю данные...</div>
+      <div class="mt-2 text-sm muted">Проверяю файлы в папке /data.</div>
     </section>
 
     <section id="kpiGrid" class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4"></section>
@@ -55,50 +61,65 @@
 const tabs = ['Обзор', 'Текучесть', 'Оргструктура', 'Workforce', 'География'];
 let activeTab = 'Обзор';
 let charts = [];
-
-const base = {
-  2021: { hc: 210, hires: 96, exits: 28, turnover: 1.5, tenure: 1.1, span: 5.2 },
-  2022: { hc: 318, hires: 142, exits: 34, turnover: 1.7, tenure: 1.4, span: 6.1 },
-  2023: { hc: 421, hires: 151, exits: 48, turnover: 1.9, tenure: 1.8, span: 7.4 },
-  2024: { hc: 490, hires: 116, exits: 47, turnover: 1.6, tenure: 2.1, span: 8.0 },
-  2025: { hc: 548, hires: 137, exits: 79, turnover: 2.0, tenure: 2.2, span: 8.4 },
-  2026: { hc: 602, hires: 118, exits: 64, turnover: 1.8, tenure: 2.4, span: 8.7 }
+let data = {
+  monthly: [],
+  departments: [],
+  employees: [],
+  events: [],
+  locations: [],
+  issues: [],
+  summary: {}
 };
 
 const monthNames = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
-const monthly = {
-  2021: [160,168,174,181,188,196,201,204,207,209,210,210],
-  2022: [218,228,239,251,263,274,286,296,304,311,316,318],
-  2023: [326,337,348,360,371,382,392,401,410,416,420,421],
-  2024: [426,432,438,445,452,460,468,475,482,486,488,490],
-  2025: [498,506,514,522,530,537,542,546,548,548,549,548],
-  2026: [555,563,572,581,590,602,608,615,622,630,638,646]
-};
 
-const departments = [
-  { name: 'Продажи', hc: 203, turnover: 4.1 },
-  { name: 'АТП', hc: 283, turnover: 3.4 },
-  { name: 'Разработка', hc: 120, turnover: 1.2 },
-  { name: 'Маркетинг', hc: 86, turnover: 2.6 },
-  { name: 'HR', hc: 84, turnover: 1.9 },
-  { name: 'Логистика', hc: 73, turnover: 2.4 }
-];
+async function loadJson(path, fallback) {
+  const response = await fetch(path, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Не найден файл: ${path}`);
+  return await response.json();
+}
 
-const managers = [
-  { name: 'Руководитель 001', dept: 'Продажи', reports: 23, turnover: 4.2, risk: 'Высокий' },
-  { name: 'Руководитель 002', dept: 'АТП', reports: 18, turnover: 3.7, risk: 'Высокий' },
-  { name: 'Руководитель 003', dept: 'Разработка', reports: 12, turnover: 1.1, risk: 'Низкий' },
-  { name: 'Руководитель 004', dept: 'HR', reports: 9, turnover: 1.8, risk: 'Средний' },
-  { name: 'Руководитель 005', dept: 'Маркетинг', reports: 16, turnover: 2.8, risk: 'Средний' }
-];
+async function loadData() {
+  try {
+    data.monthly = await loadJson('data/monthly_snapshots.json');
+    data.departments = await loadJson('data/department_snapshots.json');
+    data.employees = await loadJson('data/employees.json');
+    data.events = await loadJson('data/employee_events.json');
+    data.locations = await loadJson('data/location_snapshots.json');
+    data.issues = await loadJson('data/data_quality_issues.json');
+    data.summary = await loadJson('data/etl_summary.json');
+    document.getElementById('statusMessage').style.display = 'none';
+    initializeFilters();
+    render();
+  } catch (error) {
+    document.getElementById('statusMessage').innerHTML = `
+      <div class="text-red-700 font-black">Не удалось загрузить JSON-данные</div>
+      <div class="mt-2 text-sm text-red-600">${error.message}</div>
+      <div class="mt-4 text-sm muted">Проверь, что файлы лежат прямо в папке <b>data/</b>, например <b>data/monthly_snapshots.json</b>, а не внутри вложенной папки.</div>
+    `;
+  }
+}
 
-function pct(current, previous) {
-  if (!previous) return '0.0';
-  return (((current - previous) / previous) * 100).toFixed(1);
+function years() {
+  return [...new Set(data.monthly.map(x => Number(x.year)))].sort((a,b) => b-a);
 }
 
 function selectedYear() { return Number(document.getElementById('yearFilter').value); }
 function compareYear() { return Number(document.getElementById('compareFilter').value); }
+function selectedDepartment() { return document.getElementById('departmentFilter').value; }
+
+function initializeFilters() {
+  const ys = years();
+  const yearSelect = document.getElementById('yearFilter');
+  const compareSelect = document.getElementById('compareFilter');
+  yearSelect.innerHTML = ys.map(y => `<option>${y}</option>`).join('');
+  compareSelect.innerHTML = ys.filter(y => y !== ys[0]).map(y => `<option>${y}</option>`).join('');
+
+  const depNames = [...new Set(data.departments.map(d => d.department_name).filter(Boolean))].sort();
+  document.getElementById('departmentFilter').innerHTML = ['Все', ...depNames].map(d => `<option>${d}</option>`).join('');
+
+  document.getElementById('periodLabel').textContent = `${Math.min(...ys)}–${Math.max(...ys)} · real JSON`;
+}
 
 function disposeCharts() {
   charts.forEach(c => { try { c.dispose(); } catch(e) {} });
@@ -123,17 +144,43 @@ function setTab(tab) {
   render();
 }
 
+function monthRows(year) {
+  return data.monthly.filter(x => Number(x.year) === Number(year)).sort((a,b) => Number(a.month) - Number(b.month));
+}
+
+function yearSummary(year) {
+  const rows = monthRows(year);
+  if (!rows.length) return { hc: 0, hires: 0, exits: 0, turnover: 0, tenure: 0 };
+  const last = rows[rows.length - 1];
+  const hires = rows.reduce((s,x) => s + Number(x.hires || 0), 0);
+  const exits = rows.reduce((s,x) => s + Number(x.exits || 0), 0);
+  const avgTurnover = rows.reduce((s,x) => s + Number(x.turnover_rate_pct || 0), 0) / rows.length;
+  const tenureDays = Number(last.avg_tenure_days || 0);
+  return {
+    hc: Number(last.active_headcount_end || 0),
+    hires,
+    exits,
+    turnover: avgTurnover,
+    tenure: tenureDays / 365
+  };
+}
+
+function pct(current, previous) {
+  if (!previous) return '0.0';
+  return (((current - previous) / previous) * 100).toFixed(1);
+}
+
 function renderKpis() {
   const y = selectedYear();
   const c = compareYear();
-  const a = base[y];
-  const b = base[c];
+  const a = yearSummary(y);
+  const b = yearSummary(c);
 
   const cards = [
     { title: 'Активный headcount', value: a.hc, delta: `${pct(a.hc, b.hc)}% vs ${c}`, bg: '#ECFDF5', text: '#047857' },
     { title: 'Найм за год', value: a.hires, delta: `${pct(a.hires, b.hires)}% vs ${c}`, bg: '#F5F3FF', text: '#6D28D9' },
-    { title: 'Текучесть', value: `${a.turnover}%`, delta: `${(a.turnover - b.turnover).toFixed(1)} п.п. vs ${c}`, bg: '#ECFEFF', text: '#0E7490' },
-    { title: 'Средний стаж', value: `${a.tenure}y`, delta: `${(a.tenure - b.tenure).toFixed(1)}y vs ${c}`, bg: '#FFFBEB', text: '#B45309' }
+    { title: 'Увольнения за год', value: a.exits, delta: `${pct(a.exits, b.exits)}% vs ${c}`, bg: '#FEF2F2', text: '#B91C1C' },
+    { title: 'Средняя текучесть', value: `${a.turnover.toFixed(1)}%`, delta: `${(a.turnover - b.turnover).toFixed(1)} п.п. vs ${c}`, bg: '#ECFEFF', text: '#0E7490' }
   ];
 
   document.getElementById('kpiGrid').innerHTML = cards.map(card => `
@@ -145,17 +192,36 @@ function renderKpis() {
   `).join('');
 }
 
+function topDepartmentsByYear(year, metric='headcount_end', limit=8) {
+  const rows = data.departments.filter(x => Number(x.year) === Number(year) && Number(x.month) === 12);
+  return rows
+    .map(d => ({ name: d.department_name, value: Number(d[metric] || 0), turnover: Number(d.turnover_rate_pct || 0) }))
+    .filter(x => x.name && x.value > 0)
+    .sort((a,b) => b.value - a.value)
+    .slice(0, limit);
+}
+
+function deptRowsForSelectedYear() {
+  const y = selectedYear();
+  const selected = selectedDepartment();
+  let rows = data.departments.filter(x => Number(x.year) === y);
+  if (selected !== 'Все') rows = rows.filter(x => x.department_name === selected);
+  return rows;
+}
+
 function overview() {
   const y = selectedYear(), c = compareYear();
+  const summary = data.summary || {};
   return `
     <div class="grid gap-6 xl:grid-cols-12">
       <div class="card xl:col-span-8"><h3 class="text-2xl font-black text-slate-900">Рост компании</h3><p class="text-sm text-gray-500">Сравнение ${c} vs ${y}</p><div id="growthChart" style="height:420px"></div></div>
-      <div class="card xl:col-span-4"><h3 class="text-2xl font-black text-slate-900">Headcount по департаментам</h3><p class="text-sm text-gray-500">Текущий год</p><div id="deptChart" style="height:420px"></div></div>
-      <div class="card xl:col-span-5"><h3 class="text-2xl font-black text-slate-900">Текучесть по департаментам</h3><p class="text-sm text-gray-500">Monthly attrition</p><div id="turnoverChart" style="height:360px"></div></div>
-      <div class="card xl:col-span-7"><h3 class="text-2xl font-black text-slate-900">Executive Insights</h3><p class="text-sm text-gray-500">Ключевые сигналы</p><div class="mt-6 space-y-4">
-        <div class="rounded-3xl bg-violet-50 p-6"><b class="text-violet-900">Рост численности ${pct(base[y].hc, base[c].hc)}%</b><div class="mt-2 text-sm text-violet-700">Основной рост: Продажи, АТП и Разработка.</div></div>
-        <div class="rounded-3xl bg-cyan-50 p-6"><b class="text-cyan-900">Повышенная текучесть в Продажах</b><div class="mt-2 text-sm text-cyan-700">Attrition выше company average.</div></div>
-        <div class="rounded-3xl bg-amber-50 p-6"><b class="text-amber-900">Есть перегруженные руководители</b><div class="mt-2 text-sm text-amber-700">Часть менеджеров имеет span of control &gt; 15.</div></div>
+      <div class="card xl:col-span-4"><h3 class="text-2xl font-black text-slate-900">Headcount по департаментам</h3><p class="text-sm text-gray-500">Топ департаментов на конец года</p><div id="deptChart" style="height:420px"></div></div>
+      <div class="card xl:col-span-5"><h3 class="text-2xl font-black text-slate-900">Текучесть по департаментам</h3><p class="text-sm text-gray-500">Топ по turnover</p><div id="turnoverChart" style="height:360px"></div></div>
+      <div class="card xl:col-span-7"><h3 class="text-2xl font-black text-slate-900">Сводка ETL</h3><p class="text-sm text-gray-500">Что загружено из Excel</p><div class="mt-6 grid gap-4 md:grid-cols-2">
+        <div class="rounded-3xl bg-violet-50 p-6"><b class="text-violet-900">${summary.employees_exported || data.employees.length} сотрудников</b><div class="mt-2 text-sm text-violet-700">Записей в employees.json</div></div>
+        <div class="rounded-3xl bg-cyan-50 p-6"><b class="text-cyan-900">${summary.events_exported || data.events.length} событий</b><div class="mt-2 text-sm text-cyan-700">Найм, увольнения и статусы</div></div>
+        <div class="rounded-3xl bg-amber-50 p-6"><b class="text-amber-900">${summary.months_generated || data.monthly.length} месяцев</b><div class="mt-2 text-sm text-amber-700">Monthly snapshots</div></div>
+        <div class="rounded-3xl bg-red-50 p-6"><b class="text-red-900">${summary.quality_issues || data.issues.length} data issues</b><div class="mt-2 text-sm text-red-700">Проверки качества данных</div></div>
       </div></div>
     </div>`;
 }
@@ -163,28 +229,34 @@ function overview() {
 function attrition() {
   return `<div class="grid gap-6 xl:grid-cols-12">
     <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Динамика текучести</h3><p class="text-sm text-gray-500">По месяцам</p><div id="attritionTrend" style="height:420px"></div></div>
-    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Причины увольнений</h3><p class="text-sm text-gray-500">Категории</p><div id="reasonsChart" style="height:420px"></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Увольнения по месяцам</h3><p class="text-sm text-gray-500">Exits</p><div id="exitsChart" style="height:420px"></div></div>
   </div>`;
 }
 
 function org() {
+  const y = selectedYear();
+  const rows = topDepartmentsByYear(y, 'headcount_end', 12);
   return `<div class="grid gap-6 xl:grid-cols-12">
-    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Нагрузка на руководителей</h3><p class="text-sm text-gray-500">Direct reports и риск</p><div class="mt-5 overflow-hidden rounded-2xl border border-slate-100"><table class="w-full text-left text-sm"><thead class="bg-slate-50"><tr><th class="p-4">Руководитель</th><th>Департамент</th><th>Сотрудники</th><th>Текучесть</th><th>Риск</th></tr></thead><tbody>${managers.map(m => `<tr class="border-t"><td class="p-4 font-bold">${m.name}</td><td>${m.dept}</td><td>${m.reports}</td><td>${m.turnover}%</td><td>${m.risk}</td></tr>`).join('')}</tbody></table></div></div>
-    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Span of control</h3><p class="text-sm text-gray-500">По руководителям</p><div id="spanChart" style="height:420px"></div></div>
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Департаменты</h3><p class="text-sm text-gray-500">Headcount на конец ${y}</p><div class="mt-5 overflow-hidden rounded-2xl border border-slate-100"><table class="w-full text-left text-sm"><thead class="bg-slate-50"><tr><th class="p-4">Департамент</th><th>Headcount</th><th>Текучесть</th></tr></thead><tbody>${rows.map(r => `<tr class="border-t"><td class="p-4 font-bold">${r.name}</td><td>${r.value}</td><td>${r.turnover.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Структура по департаментам</h3><p class="text-sm text-gray-500">Top departments</p><div id="orgDeptChart" style="height:420px"></div></div>
   </div>`;
 }
 
 function workforce() {
+  const active = data.employees.filter(e => e.status === 'active' || e.status === 'on_leave');
+  const male = active.filter(e => e.gender === 'male').length;
+  const female = active.filter(e => e.gender === 'female').length;
+  const unknown = Math.max(active.length - male - female, 0);
   return `<div class="grid gap-6 xl:grid-cols-12">
-    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Гендерное распределение</h3><p class="text-sm text-gray-500">Workforce composition</p><div id="genderChart" style="height:380px"></div></div>
-    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Стаж</h3><p class="text-sm text-gray-500">Tenure bands</p><div id="tenureChart" style="height:380px"></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Гендерное распределение</h3><p class="text-sm text-gray-500">Активные сотрудники</p><div id="genderChart" style="height:380px"></div></div>
+    <div class="card xl:col-span-7"><h3 class="text-2xl font-black">Качество данных</h3><p class="text-sm text-gray-500">Первые 8 issues</p><div class="mt-5 space-y-3">${data.issues.slice(0,8).map(i => `<div class="rounded-2xl bg-slate-50 p-4 text-sm"><b>${i.severity}</b> · ${i.field || ''}<div class="muted">${i.message || i.issue_type}</div></div>`).join('')}</div></div>
   </div>`;
 }
 
 function geography() {
   return `<div class="grid gap-6 xl:grid-cols-12">
     <div class="card xl:col-span-7"><h3 class="text-2xl font-black">География</h3><p class="text-sm text-gray-500">Сотрудники по городам</p><div id="cityChart" style="height:420px"></div></div>
-    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Фильтры для HRBP</h3><p class="text-sm text-gray-500">Будущий deep-dive</p><div class="mt-6 space-y-4"><div class="rounded-3xl bg-violet-50 p-5">Страна → город → департамент</div><div class="rounded-3xl bg-cyan-50 p-5">Руководитель → команда → текучесть</div><div class="rounded-3xl bg-amber-50 p-5">Порог приватности: не показывать N &lt; 5</div></div></div>
+    <div class="card xl:col-span-5"><h3 class="text-2xl font-black">Локации</h3><p class="text-sm text-gray-500">Топ городов</p><div id="countryChart" style="height:420px"></div></div>
   </div>`;
 }
 
@@ -201,25 +273,27 @@ function renderCharts() {
       xAxis: { type: 'category', data: monthNames },
       yAxis: { type: 'value' },
       series: [
-        { name: String(c), type: 'line', smooth: true, data: monthly[c], lineStyle: { width: 3 } },
-        { name: String(y), type: 'line', smooth: true, areaStyle: { opacity: 0.16 }, data: monthly[y], lineStyle: { width: 4 } }
+        { name: String(c), type: 'line', smooth: true, data: monthRows(c).map(x => x.active_headcount_end), lineStyle: { width: 3 } },
+        { name: String(y), type: 'line', smooth: true, areaStyle: { opacity: 0.16 }, data: monthRows(y).map(x => x.active_headcount_end), lineStyle: { width: 4 } }
       ]
     });
 
+    const dep = topDepartmentsByYear(y, 'headcount_end', 8);
     makeChart('deptChart', {
-      color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6'],
+      color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6', '#14b8a6', '#f97316'],
       tooltip: { trigger: 'item' },
       legend: { bottom: 0 },
-      series: [{ type: 'pie', radius: ['45%', '72%'], center: ['50%', '45%'], data: departments.map(d => ({ name: d.name, value: d.hc })) }]
+      series: [{ type: 'pie', radius: ['45%', '72%'], center: ['50%', '43%'], data: dep.map(d => ({ name: d.name, value: d.value })) }]
     });
 
+    const turn = topDepartmentsByYear(y, 'headcount_end', 10).sort((a,b) => b.turnover - a.turnover).slice(0,8);
     makeChart('turnoverChart', {
       color: ['#f97316'],
       tooltip: { trigger: 'axis' },
-      grid: { left: 95, right: 25, top: 25, bottom: 35 },
+      grid: { left: 140, right: 25, top: 25, bottom: 35 },
       xAxis: { type: 'value' },
-      yAxis: { type: 'category', data: departments.map(d => d.name) },
-      series: [{ name: 'Текучесть %', type: 'bar', data: departments.map(d => d.turnover), itemStyle: { borderRadius: [0, 10, 10, 0] } }]
+      yAxis: { type: 'category', data: turn.map(d => d.name) },
+      series: [{ name: 'Текучесть %', type: 'bar', data: turn.map(d => Number(d.turnover.toFixed(1))), itemStyle: { borderRadius: [0, 10, 10, 0] } }]
     });
   }
 
@@ -227,67 +301,73 @@ function renderCharts() {
     makeChart('attritionTrend', {
       color: ['#06b6d4', '#7c3aed'],
       tooltip: { trigger: 'axis' },
-      legend: { data: ['2025','2026'], top: 0 },
+      legend: { data: [String(c), String(y)], top: 0 },
       grid: { top: 55, left: 45, right: 25, bottom: 35 },
       xAxis: { type: 'category', data: monthNames },
       yAxis: { type: 'value' },
       series: [
-        { name: '2025', type: 'line', smooth: true, data: [1.6,1.8,2.0,1.5,1.9,2.2,2.0,1.7,1.9,2.1,1.8,1.7] },
-        { name: '2026', type: 'line', smooth: true, areaStyle: { opacity: 0.15 }, data: [1.4,1.5,1.8,1.7,1.9,1.8,1.6,1.5,1.7,1.8,1.6,1.5] }
+        { name: String(c), type: 'line', smooth: true, data: monthRows(c).map(x => Number((x.turnover_rate_pct || 0).toFixed(1))) },
+        { name: String(y), type: 'line', smooth: true, areaStyle: { opacity: 0.15 }, data: monthRows(y).map(x => Number((x.turnover_rate_pct || 0).toFixed(1))) }
       ]
     });
 
-    makeChart('reasonsChart', {
-      color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444'],
-      tooltip: { trigger: 'item' },
-      legend: { bottom: 0 },
-      series: [{ type: 'pie', radius: '68%', center: ['50%', '43%'], data: [
-        { name: 'Личные обстоятельства', value: 31 },
-        { name: 'Не прошёл адаптацию', value: 22 },
-        { name: 'Доход', value: 18 },
-        { name: 'Формат работы', value: 14 },
-        { name: 'Другое', value: 15 }
-      ] }]
+    makeChart('exitsChart', {
+      color: ['#ef4444'],
+      tooltip: { trigger: 'axis' },
+      grid: { top: 35, left: 45, right: 25, bottom: 35 },
+      xAxis: { type: 'category', data: monthNames },
+      yAxis: { type: 'value' },
+      series: [{ name: 'Увольнения', type: 'bar', data: monthRows(y).map(x => x.exits), itemStyle: { borderRadius: [10,10,0,0] } }]
     });
   }
 
   if (activeTab === 'Оргструктура') {
-    makeChart('spanChart', {
+    const rows = topDepartmentsByYear(y, 'headcount_end', 10).reverse();
+    makeChart('orgDeptChart', {
       color: ['#7c3aed'],
       tooltip: { trigger: 'axis' },
-      grid: { left: 45, right: 20, top: 30, bottom: 90 },
-      xAxis: { type: 'category', data: managers.map(m => m.name), axisLabel: { rotate: 25 } },
-      yAxis: { type: 'value' },
-      series: [{ name: 'Direct reports', type: 'bar', data: managers.map(m => m.reports), itemStyle: { borderRadius: [10,10,0,0] } }]
+      grid: { left: 150, right: 20, top: 30, bottom: 35 },
+      xAxis: { type: 'value' },
+      yAxis: { type: 'category', data: rows.map(r => r.name) },
+      series: [{ name: 'Headcount', type: 'bar', data: rows.map(r => r.value), itemStyle: { borderRadius: [0,10,10,0] } }]
     });
   }
 
   if (activeTab === 'Workforce') {
+    const active = data.employees.filter(e => e.status === 'active' || e.status === 'on_leave');
+    const male = active.filter(e => e.gender === 'male').length;
+    const female = active.filter(e => e.gender === 'female').length;
+    const unknown = Math.max(active.length - male - female, 0);
     makeChart('genderChart', {
-      color: ['#06b6d4', '#ec4899'],
+      color: ['#06b6d4', '#ec4899', '#94a3b8'],
       tooltip: { trigger: 'item' },
       legend: { bottom: 0 },
-      series: [{ type: 'pie', radius: ['48%','72%'], center: ['50%','43%'], data: [{ name: 'Мужчины', value: 54 }, { name: 'Женщины', value: 46 }] }]
-    });
-
-    makeChart('tenureChart', {
-      color: ['#10b981'],
-      tooltip: { trigger: 'axis' },
-      grid: { left: 45, right: 25, top: 30, bottom: 35 },
-      xAxis: { type: 'category', data: ['<3м','3–6м','6–12м','1–2г','2–5л','5л+'] },
-      yAxis: { type: 'value' },
-      series: [{ name: 'Сотрудники', type: 'bar', data: [38,61,92,141,167,49], itemStyle: { borderRadius: [10,10,0,0] } }]
+      series: [{ type: 'pie', radius: ['48%','72%'], center: ['50%','43%'], data: [{ name: 'Мужчины', value: male }, { name: 'Женщины', value: female }, { name: 'Не указано', value: unknown }] }]
     });
   }
 
   if (activeTab === 'География') {
+    const latestMonth = Math.max(...data.locations.map(x => Number(x.year) * 100 + Number(x.month)));
+    const locRows = data.locations.filter(x => Number(x.year) * 100 + Number(x.month) === latestMonth);
+    const cityRows = locRows.map(x => ({ name: x.city || x.country || 'Не указано', value: Number(x.headcount_end || 0) })).filter(x => x.value > 0).sort((a,b) => b.value-a.value).slice(0,10).reverse();
+    const countryAgg = {};
+    locRows.forEach(x => { const k = x.country || 'Не указано'; countryAgg[k] = (countryAgg[k] || 0) + Number(x.headcount_end || 0); });
+    const countryRows = Object.entries(countryAgg).map(([name,value]) => ({name,value})).sort((a,b)=>b.value-a.value).slice(0,8);
+
     makeChart('cityChart', {
       color: ['#06b6d4'],
       tooltip: { trigger: 'axis' },
-      grid: { left: 105, right: 25, top: 30, bottom: 35 },
+      grid: { left: 125, right: 25, top: 30, bottom: 35 },
       xAxis: { type: 'value' },
-      yAxis: { type: 'category', data: ['Екатеринбург','Гомель','Минск','Москва','Брест','Витебск'] },
-      series: [{ name: 'Сотрудники', type: 'bar', data: [821,236,98,77,30,22], itemStyle: { borderRadius: [0,10,10,0] } }]
+      yAxis: { type: 'category', data: cityRows.map(x => x.name) },
+      series: [{ name: 'Сотрудники', type: 'bar', data: cityRows.map(x => x.value), itemStyle: { borderRadius: [0,10,10,0] } }]
+    });
+
+    makeChart('countryChart', {
+      color: ['#7c3aed', '#06b6d4', '#f59e0b', '#10b981', '#ef4444'],
+      tooltip: { trigger: 'item' },
+      legend: { bottom: 0 },
+      series: [{ type: 'pie', radius: ['45%','72%'], center: ['50%','43%'], data: countryRows }]
     });
   }
 }
@@ -309,7 +389,8 @@ document.getElementById('compareFilter').addEventListener('change', render);
 document.getElementById('departmentFilter').addEventListener('change', render);
 document.getElementById('employmentFilter').addEventListener('change', render);
 window.addEventListener('resize', () => charts.forEach(c => c.resize()));
-render();
+loadData();
 </script>
 </body>
 </html>
+
